@@ -27,6 +27,7 @@
         } else {
           echo "<a href='login.php'>Login</a>";
         }
+        include(SHARED_PATH . "/navbar.php");
 
         ?>
 
