@@ -134,6 +134,12 @@ class User extends DatabaseObject {
     return $result['state_abbr_sta'];
   }
 
+  public function getDonations() {
+    $sql = "SELECT * FROM inventory_inv WHERE id_usrdonator_inv ='" . $this->id . "'";
+    $result = InventoryItem::find_by_sql($sql);
+    return $result;
+  }
+
 }
 
 ?>
