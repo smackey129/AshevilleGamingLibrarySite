@@ -25,7 +25,8 @@
         if($session->is_logged_in()) {
         echo "<a href='logout.php'>Logout</a>";
         } else {
-          echo "<a href='login.php'>Login</a>";
+          echo "<a href='login.php'>Login</a> ";
+          echo "<a href='signup.php'>Sign Up</a>";
         }
         include(SHARED_PATH . "/navbar.php");
 

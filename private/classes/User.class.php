@@ -3,7 +3,7 @@
 class User extends DatabaseObject {
 
   static protected $table_name = "users_usr";
-  static protected $db_columns = ['id', 'fname_usr', 'lname_usr', 'email_usr', 'username_usr', 'street_address_usr', 'city_usr', 'id_sta_usr', 'user_level_usr', 'hashed_password_usr', 'balance_usr'];
+  static protected $db_columns = ['id', 'fname_usr', 'lname_usr', 'email_usr', 'username_usr', 'street_address_usr', 'city_usr', 'id_sta_usr', 'zip_usr', 'user_level_usr', 'hashed_password_usr', 'balance_usr'];
 
   
   public $id;
@@ -14,6 +14,7 @@ class User extends DatabaseObject {
   public $street_address_usr;
   public $city_usr;
   public $id_sta_usr;
+  public $zip_usr;
   public $user_level_usr;
   protected $hashed_password_usr;
   public $balance_usr;
@@ -25,10 +26,12 @@ class User extends DatabaseObject {
     $this->fname_usr = $args['fname_usr'] ?? '';
     $this->lname_usr = $args['lname_usr'] ?? '';
     $this->email_usr = $args['email_usr'] ?? '';
+    $this->username_usr = $args['username_usr'] ?? '';
     $this->street_address_usr = $args['street_address_usr'] ?? '';
     $this->city_usr = $args['city_usr'] ?? '';
+    $this->zip_usr = $args['zip_usr'] ?? '';
     $this->id_sta_usr = $args['id_sta_usr'] ?? '';
-    $this->user_level_usr = $args['user_level_usr'] ?? '';
+    $this->user_level_usr = $args['user_level_usr'] ?? 'user';
     $this->password = $args['password'] ?? '';
     $this->confirm_password = $args['confirm_password'] ?? '';
   }
@@ -138,6 +141,13 @@ class User extends DatabaseObject {
     $sql = "SELECT * FROM inventory_inv WHERE id_usrdonator_inv ='" . $this->id . "'";
     $result = InventoryItem::find_by_sql($sql);
     return $result;
+  }
+
+  public static function getStateNameById($id) {
+    $sql = "SELECT state_name_sta FROM states_sta WHERE id='" . $id . "'";
+    $result = self::$database->query($sql);
+    $result = $result->fetch_assoc();
+    return $result['state_name_sta'];
   }
 
 }

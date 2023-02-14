@@ -80,6 +80,8 @@ class DatabaseObject {
     $result = self::$database->query($sql);
     if($result) {
       $this->id = self::$database->insert_id;
+      echo ($this->id);
+
     }
     return $result;
   }
@@ -105,10 +107,8 @@ class DatabaseObject {
   public function save() {
     // A new record will not have an ID yet
     if(isset($this->id)) {
-      print("Updated");
       return $this->update();
     } else {
-      print("Created");
       return $this->create();
     }
   }
