@@ -19,9 +19,9 @@
 
         <?php 
         require_login();
-        echo "Username: ". $session->username . "<br>";
+        echo "Welcome ". $session->username . "!<br>";
         echo "User Level: ". $session->user_level ."<br>";
-
+        echo "<a href='". url_for("/profile") ."'>User Profile</a>";
         echo "<a href='". url_for("logout.php") ."'>Logout</a><br>";
         include(SHARED_PATH . "/navbar.php");
         ?>
