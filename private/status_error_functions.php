@@ -8,6 +8,14 @@ function require_login() {
 
 }
 
+function require_admin() {
+  global $session;
+  require_login();
+  if($session->user_level != 'admin') {
+    redirect_to(url_for('index.php'));
+  }
+}
+
 function display_errors($errors=array()) {
   $output = '';
   if(!empty($errors)) {

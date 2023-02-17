@@ -20,8 +20,8 @@ class Session {
             $this->user_id = $user->id;
             $_SESSION['username'] = $user->username_usr;
             $this->username = $user->username_usr;
-            $this->user_id = time();
-            $_SESSION['last_login'] = $this->user_id;
+            $this->last_login = time();
+            $_SESSION['last_login'] = $this->last_login;
             $_SESSION['user_level'] = $user->user_level_usr;
             $this->user_level = $user->user_level_usr;
         } return true;
