@@ -2,7 +2,7 @@
   if(!isset($page_title)) { $page_title = 'Page Title'; }
 ?>
 
-<!doctype html>
+<!DOCTYPE html>
 
 <html lang="en">
   <head>
