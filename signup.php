@@ -7,7 +7,6 @@ if(is_post_request()) {
   $args = $_POST['user'];
   $user = new User($args);
   $result = $user->save();
-  var_dump($user);
 
   if($result === true) {
     $new_id = $user->id;

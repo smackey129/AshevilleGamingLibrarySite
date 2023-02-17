@@ -3,12 +3,12 @@
 $page_title = $session->username . '\'s Profile'; 
 include(SHARED_PATH . '/user_header.php'); 
 $user = User::find_by_username($session->username);
-$donations = $user->getDonations();
+$checkouts = $user->getCheckouts();
 
 ?>
 
 
-<h2>My Donations</h2>
+<h2>My Checked Out Games</h2>
 
   	<table border="1">
       <tr>
@@ -21,7 +21,7 @@ $donations = $user->getDonations();
         <th>Available After</th>
       </tr>
 
-      <?php foreach($donations as $item) { ?>
+      <?php foreach($checkouts as $item) { ?>
         <tr>
           <td><?= h($item->id); ?></td>
           <td><?= h($item->getGame()); ?></td>

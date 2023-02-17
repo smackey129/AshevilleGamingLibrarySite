@@ -94,6 +94,22 @@ class User extends DatabaseObject {
     } elseif (!has_unique_username($this->username_usr, $this->id ?? 0)) {
       $this->errors[] = "Username not allowed, try another.";
     }
+
+    if(is_blank($this->street_address_usr)) {
+      $this->errors[] = "Street Address cannot be blank.";
+    } 
+
+    if(is_blank($this->city_usr)) {
+      $this->errors[] = "City cannot be blank.";
+    } 
+
+    if(is_blank($this->id_sta_usr)) {
+      $this->errors[] = "Please select a state.";
+    } 
+
+    if(is_blank($this->zip_usr)) {
+      $this->errors[] = "Zip Code cannot be blank";
+    } 
   
     if($this->password_required) {
       if(is_blank($this->password)) {
@@ -139,6 +155,12 @@ class User extends DatabaseObject {
 
   public function getDonations() {
     $sql = "SELECT * FROM inventory_inv WHERE id_usrdonator_inv ='" . $this->id . "'";
+    $result = InventoryItem::find_by_sql($sql);
+    return $result;
+  }
+
+  public function getCheckouts() {
+    $sql = "SELECT * FROM inventory_inv WHERE id_usr_inv ='" . $this->id . "'";
     $result = InventoryItem::find_by_sql($sql);
     return $result;
   }
