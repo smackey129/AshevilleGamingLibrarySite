@@ -1,5 +1,8 @@
 <?php
 require_once('private/initialize.php');
+if($session->is_logged_in()) {
+  redirect_to(url_for("index.php"));
+}
 include(SHARED_PATH . '/public_header.php'); 
 
 $errors = [];

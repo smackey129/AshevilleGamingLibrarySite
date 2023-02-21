@@ -1,7 +1,7 @@
 <?php 
-  require_once('../private/initialize.php');   
+  require_once('../../private/initialize.php');   
   $users = User::find_all();
-  $page_title = 'Members'; 
+  $page_title = 'Users'; 
   include(SHARED_PATH . '/admin_header.php'); 
 ?>
 
@@ -19,6 +19,9 @@
     <th>State</th>
     <th>User Level</th>
     <th>Balance</th>
+    <th>View</th>
+    <th>Edit</th>
+    <th>Delete</th>
   </tr>
 
   <?php foreach($users as $user) { ?>
@@ -33,6 +36,9 @@
       <td><?= h($user->getStateAbbr()); ?></td>
       <td><?= h($user->user_level_usr); ?></td>
       <td><?= h($user->balance_usr); ?></td>
+      <td><a href="<?php echo url_for('admin/users/show.php?id=' . h(u($user->id))); ?>">View</a></td>
+      <td><a href="<?php echo url_for('admin/users/edit.php?id=' . h(u($user->id))); ?>">Edit</a></td>
+      <td><a href="<?php echo url_for('admin/users/delete.php?id=' . h(u($user->id))); ?>">Delete</a></td>
     </tr>
   <?php } ?>
 </table>
