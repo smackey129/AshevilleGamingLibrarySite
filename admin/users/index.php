@@ -6,7 +6,7 @@
 ?>
 
 <h2>Users</h2>
-
+<a href='new.php'>Create New User</a>
 <table border="1">
   <tr>
     <th>ID</th>

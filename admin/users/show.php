@@ -64,4 +64,9 @@ if($user == false) {
     <dd><?php echo h($user->zip_usr); ?></dd>
   </dl>
 
+  <dl>
+    <dt>User Level</dt>
+    <dd><?php echo h($user->user_level_usr); ?></dd>
+  </dl>
+
 <?php include(SHARED_PATH . '/user_footer.php'); ?>
