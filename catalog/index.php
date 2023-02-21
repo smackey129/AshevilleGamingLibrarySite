@@ -1,4 +1,4 @@
-<?php require_once('private/initialize.php'); ?>
+<?php require_once('../private/initialize.php'); ?>
 <?php 
 $inventory = InventoryItem::find_all();
 $page_title = 'Game Catalog'; 
