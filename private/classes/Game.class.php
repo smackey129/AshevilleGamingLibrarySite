@@ -12,7 +12,6 @@ class Game extends DatabaseObject {
   public $id_cmppub_gme;
   
   public function __construct($args=[]) {
-    $this->id = $args['id'] ?? '';
     $this->name_gme = $args['name_gme'] ?? '';
     $this->id_age_gme = $args['id_age_gme'] ?? '';
     $this->id_gnr_gme = $args['id_gnr_gme'] ?? '';
@@ -45,6 +44,11 @@ class Game extends DatabaseObject {
     $result = self::$database->query($sql);
     $result = $result->fetch_assoc();
     return $result['name_cmp'];
+  }
+
+  public static function getGamesAlphabetized() {
+    $sql = "SELECT * FROM " . static::$table_name . " ORDER BY name_gme";
+    return(static::find_by_sql($sql));
   }
 }
 

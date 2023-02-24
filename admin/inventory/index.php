@@ -6,7 +6,7 @@
 ?>
 
 <h2>Inventory</h2>
-
+<a href="new.php">Add Inventory Item</a>
   	<table border="1">
       <tr>
         <th>ID</th>
