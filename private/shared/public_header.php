@@ -23,10 +23,10 @@
 
         <?php 
         if($session->is_logged_in()) {
-        echo "<a href='logout.php'>Logout</a>";
+        echo "<a href=". url_for('logout.php') . ">Logout</a>";
         } else {
-          echo "<a href='login.php'>Login</a> ";
-          echo "<a href='signup.php'>Sign Up</a>";
+          echo "<a href=". url_for('login.php') . ">Login</a> ";
+          echo "<a href=". url_for('signup.php') . ">Sign Up</a>";
         }
         include(SHARED_PATH . "/navbar.php");
 

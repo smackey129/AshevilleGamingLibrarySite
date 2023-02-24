@@ -58,6 +58,7 @@ class Session {
       if(!isset($this->last_login)){
         return false;
       } elseif($this->last_login + self::MAX_LOGIN_AGE < time()) {
+        $this->logout();
         return false;
       } else {
         return true;
