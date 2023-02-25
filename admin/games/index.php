@@ -6,7 +6,7 @@
 ?>
 
 <h2>Games</h2>
-
+<a href='new.php'>Add New Game</a>
   	<table border="1">
       <tr>
         <th>ID</th>
