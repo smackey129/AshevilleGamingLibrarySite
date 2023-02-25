@@ -53,5 +53,5 @@ if($item == false) {
     <dt>Available After/Due By:</dt>
     <dd><time datetime=<?= $item->available_after_inv?>><?php echo h($item->available_after_inv); ?></time></dd>
   </dl>
-
+</div>
 <?php include(SHARED_PATH . '/user_footer.php'); ?>

@@ -68,5 +68,5 @@ if($user == false) {
     <dt>User Level</dt>
     <dd><?php echo h($user->user_level_usr); ?></dd>
   </dl>
-
+</div>
 <?php include(SHARED_PATH . '/user_footer.php'); ?>
