@@ -25,7 +25,7 @@ if(is_post_request()) {
 
 ?>
 
-<?php $page_title = 'Delete User'; ?>
+<?php $page_title = 'Delete Item'; ?>
 <?php include(SHARED_PATH . '/admin_header.php'); ?>
 
 <div id="content">

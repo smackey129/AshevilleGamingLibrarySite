@@ -32,7 +32,7 @@ if(is_post_request()) {
 
 ?>
 
-<?php $page_title = 'Edit User'; ?>
+<?php $page_title = 'Edit Inventory Item'; ?>
 <?php include(SHARED_PATH . '/admin_header.php'); ?>
 
 <div id="content">
@@ -49,7 +49,7 @@ if(is_post_request()) {
       <?php include('form_fields.php'); ?>
 
       <div id="operations">
-        <input type="submit" value="Edit User" />
+        <input type="submit" value="Edit Item" />
       </div>
     </form>
 
