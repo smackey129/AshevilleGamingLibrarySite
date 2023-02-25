@@ -8,13 +8,13 @@ if(is_post_request()) {
   $item = new InventoryItem($args);
   $result = $item->save();
 
-  // if($result === true) {
-  //   $new_id = $item->id;
-  //   $session->message('The item was created successfully.');
-  //   redirect_to('index.php');
-  // } else {
-  //   // show errors
-  // }
+  if($result === true) {
+    $new_id = $item->id;
+    $session->message('The item was created successfully.');
+    redirect_to('index.php');
+  } else {
+    // show errors
+  }
 
 } else {
   // display the form
