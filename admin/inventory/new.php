@@ -6,7 +6,6 @@ if(is_post_request()) {
   // Create record using post parameters
   $args = $_POST['item'];
   $item = new InventoryItem($args);
-  var_dump($item);
   $result = $item->save();
 
   // if($result === true) {
