@@ -11,7 +11,7 @@ if(is_post_request()) {
   if($result === true) {
     $new_id = $user->id;
     $session->message('The user was created successfully.');
-    // redirect_to(url_for('databaseContent.php'));
+    redirect_to(url_for('index.php'));
   } else {
     // show errors
   }
