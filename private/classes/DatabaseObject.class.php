@@ -77,8 +77,7 @@ class DatabaseObject {
     $sql .= ") VALUES ('";
     $sql .= join("', '", array_values($attributes));
     $sql .= "')";
-    $sql = str_replace("'NULL'", "NULL", $sql);
-    var_dump($sql);
+    $sql = str_replace("''", "NULL", $sql);
     $result = self::$database->query($sql);
     if($result) {
       $this->id = self::$database->insert_id;
@@ -102,7 +101,7 @@ class DatabaseObject {
     $sql .= join(', ', $attribute_pairs);
     $sql .= " WHERE id='" . self::$database->escape_string($this->id) . "' ";
     $sql .= "LIMIT 1";
-    $sql = str_replace("'NULL'", "NULL", $sql);
+    $sql = str_replace("''", "NULL", $sql);
     $result = self::$database->query($sql);
     return $result;
   }
@@ -119,9 +118,9 @@ class DatabaseObject {
   public function merge_attributes($args=[]) {
     foreach($args as $key => $value) {
       if(property_exists($this, $key) && !is_null($value)) {
-        if($value == "") {
-          $value = "NULL";
-        }
+        // if($value == "") {
+        //   $value = "NULL";
+        // }
         $this->$key = $value;
       }
     }
@@ -141,9 +140,9 @@ class DatabaseObject {
     $sanitized = [];
     foreach($this->attributes() as $key => $value) {
       $sanitized[$key] = self::$database->escape_string($value);
-      if($value == "") {
-        $sanitized[$key] = "NULL";
-      }
+      // if($value == "") {
+      //   $sanitized[$key] = "NULL";
+      // }
     }
     return $sanitized;
   }
