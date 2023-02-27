@@ -12,23 +12,17 @@ $checkouts = $user->getCheckouts();
 
   	<table border="1">
       <tr>
-        <th>ID</th>
         <th>Game</th>
         <th>Console</th>
         <th>Condition</th>
-        <th>Current User</th>
-        <th>Available?</th>
-        <th>Available After</th>
+        <th>Due By</th>
       </tr>
 
       <?php foreach($checkouts as $item) { ?>
         <tr>
-          <td><?= h($item->id); ?></td>
           <td><?= h($item->getGame()); ?></td>
           <td><?= h($item->getConsole()); ?></td>
           <td><?= h($item->condition_inv); ?></td>
-          <td><?= h($item->getCurrentUser()); ?></td>
-          <td><?= h($item->getAvailability()); ?></td>
           <td><?= h($item->available_after_inv); ?></td>
     	  </tr>
       <?php } ?>
