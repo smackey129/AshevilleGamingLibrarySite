@@ -1,0 +1,15 @@
+<?php require_once('../private/initialize.php');   ?>
+
+<?php $page_title = 'Search Page'; ?>
+<?php
+if(isset($session->user_level)){
+  include(SHARED_PATH . '/user_header.php'); 
+}
+else {
+  include(SHARED_PATH . '/public_header.php'); 
+} 
+?>
+<main>
+  <h2>Search Page Stub</h2>
+</main>
+<?php include(SHARED_PATH . '/user_footer.php'); ?>
