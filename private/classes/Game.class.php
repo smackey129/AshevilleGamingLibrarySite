@@ -46,6 +46,11 @@ class Game extends DatabaseObject {
     return $result['name_cmp'];
   }
 
+  public function getInventoryItems() {
+    $sql = "SELECT * FROM inventory_inv WHERE id_gme_inv='" . $this->id . "'";
+    return(static::find_by_sql($sql));
+  }
+
   public static function getGamesAlphabetized() {
     $sql = "SELECT * FROM " . static::$table_name . " ORDER BY name_gme";
     return(static::find_by_sql($sql));
