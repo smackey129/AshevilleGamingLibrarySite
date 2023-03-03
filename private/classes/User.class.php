@@ -165,6 +165,16 @@ class User extends DatabaseObject {
     return $result;
   }
 
+  public function getWishList() {
+    $sql = "SELECT id_gme_wsh FROM wish_list_wsh WHERE id_usr_wsh ='" . $this->id . "'";
+    $result = self::$database->query($sql);
+    $object_array = [];
+    while($record = $result->fetch_assoc()) {
+      $object_array[] = Game::find_by_id($record['id_gme_wsh']);
+    }
+    return $object_array;
+  }
+
   public static function getStateNameById($id) {
     $sql = "SELECT state_name_sta FROM states_sta WHERE id='" . $id . "'";
     $result = self::$database->query($sql);
