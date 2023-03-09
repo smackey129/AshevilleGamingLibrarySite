@@ -8,19 +8,12 @@
   </head>
 
   <body>
-
+    <div id="content-wrapper">
     <header>
-      <h1>
-        <a href="<?php echo url_for('index.php'); ?>">
-          Asheville Gaming Library
-        </a>
-      </h1>
-    </header>
-  
-    <navigation>
-
-        <?php 
+      <a href="<?php echo url_for('index.php'); ?>"><img src="<?= url_for('images/logo crop 2.png')?>" alt="AshevilleGame Library Logo" width="249" height="96"></a>
+      <?php 
         echo "<div id='user_links'>";
+        echo "<span>Welcome Guest!</span><br>";
         if($session->is_logged_in()) {
         echo "<a href=". url_for('logout.php') . ">Logout</a>";
         } else {
@@ -28,8 +21,14 @@
           echo "<a href=". url_for('signup.php') . ">Sign Up</a>";
         }
         echo "</div>";
+        ?>
+    </header>
+  
+    <nav>
+
+        <?php
         include(SHARED_PATH . "/navbar.php");
 
         ?>
 
-    </navigation>
+    </nav>

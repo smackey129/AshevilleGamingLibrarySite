@@ -6,19 +6,49 @@ body {
   margin: 0;
 }
 
+#content-wrapper {
+  margin: 0 auto;
+  width: 80%;
+}
+
 img {
   height: auto;
   max-width: 100%;
 }
 
-header h1 {
+/* header h1 {
+  text-align: center;
+} */
+
+header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+nav {
   text-align: center;
 }
 
 #user_links {
-  margin: 1rem auto;
-  text-align: center;
+  border: 2px solid #000;
+  border-radius: 15px;
+  display: inline-block;
+  margin: 1rem 0;
+  padding: 1rem;
+  text-align: left;
 }
+
+#user_links span {
+  display: inline-block;
+  margin: .5rem 0;
+}
+
+#user_links a {
+  display: inline-block;
+  margin-right: .25rem;
+}
+
 
 #navbar a {
   display: block;

@@ -12,27 +12,26 @@
   </head>
 
   <body>
+    <div id="content-wrapper">
     <header>
-      <h1>
-        <a href="<?php echo url_for('index.php'); ?>">
-          Asheville Gaming Library
-        </a>
-      </h1>
+    <a href="<?php echo url_for('index.php'); ?>"><img src="<?= url_for('images/logo crop 2.png')?>" alt="AshevilleGame Library Logo" width="249" height="96"></a>
+    <?php 
+      require_admin();
+      echo "<div id='user_links'>";
+      echo "<span>Welcome ". $session->username . "!</span><br>";
+      echo "<a href='". url_for("/profile") ."'>User Profile</a> ";
+      echo "<a href='". url_for("/admin") ."'>Enter Admin Area</a> ";
+      echo "<a href='". url_for("logout.php") ."'>Logout</a><br>";
+      echo "</div>";
+    ?>
     </header>
-    <navigation>
+    <nav>
 
-        <?php 
-        require_admin();
-        echo "<div id='user_links'>";
-        echo "<span>Welcome ". $session->username . "!</span><br>";
-        echo "<a href='". url_for("/profile") ."'>User Profile</a> ";
-        echo "<a href='". url_for("/admin") ."'>Enter Admin Area</a> ";
-        echo "<a href='". url_for("logout.php") ."'>Logout</a><br>";
-        echo "</div>";
+        <?php
         include(SHARED_PATH . "/navbar.php");
         ?>
         
-    </navigation>
+    </nav>
 
 
     <?php echo display_session_message(); ?>

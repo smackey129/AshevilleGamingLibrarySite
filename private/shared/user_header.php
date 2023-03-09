@@ -12,29 +12,26 @@
   </head>
 
   <body>
+    <div id="content-wrapper">
     <header>
-      <h1>
-        <a href="<?php echo url_for('index.php'); ?>">
-          Asheville Gaming Library
-        </a>
-      </h1>
+    <a href="<?php echo url_for('index.php'); ?>"><img src="<?= url_for('images/logo crop 2.png')?>" alt="AshevilleGame Library Logo" width="249" height="96"></a>
+    <?php 
+      require_login();
+      echo "<div id='user_links'>";
+      echo "<span>Welcome ". $session->username . "!</span><br>";
+      echo "<a href='". url_for("/profile") ."'>User Profile</a> ";
+      if($session->user_level == 'admin'){
+        echo "<a href='". url_for("/admin") ."'>Enter Admin Area</a> ";
+      }
+      echo "<a href='". url_for("logout.php") ."'>Logout</a><br>";
+      echo "</div>";
+    ?>
     </header>
-    <navigation>  
-
-        <?php 
-        require_login();
-        echo "<div id='user_links'>";
-        echo "Welcome ". $session->username . "!<br>";
-        echo "<a href='". url_for("/profile") ."'>User Profile</a> ";
-        if($session->user_level == 'admin'){
-          echo "<a href='". url_for("/admin") ."'>Enter Admin Area</a> ";
-        }
-        echo "<a href='". url_for("logout.php") ."'>Logout</a><br>";
-        echo "</div>";
-        include(SHARED_PATH . "/navbar.php");
-        ?>
-        
-    </navigation>
+    <nav>  
+      <?php
+      include(SHARED_PATH . "/navbar.php");
+      ?>
+    </nav>
 
 
     <?php echo display_session_message(); ?>
