@@ -24,8 +24,7 @@ else {
   include(SHARED_PATH . '/public_header.php'); 
 } 
 ?>
-<div id="content">
-  <main>
+<main>
 
     <a class="back-link" href="<?php echo url_for('catalog/index.php'); ?>">&laquo; Back to List</a>
 
@@ -57,6 +56,5 @@ else {
       </form>
     <?php }
     ?>
-  </main>
-</div>
+</main>
 <?php include(SHARED_PATH . '/user_footer.php'); ?>

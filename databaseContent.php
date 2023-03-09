@@ -13,9 +13,9 @@ else {
 }
 
 ?>
-
-<h1>Database Table Examples</h1>
-<h2>Users</h2>
+<main>
+  <h1>Database Table Examples</h1>
+  <h2>Users</h2>
 
   	<table border="1">
       <tr>
@@ -98,4 +98,5 @@ else {
     	  </tr>
       <?php } ?>
   	</table>
+</main>
 <?php include(SHARED_PATH . '/user_footer.php'); ?>

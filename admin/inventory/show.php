@@ -17,7 +17,7 @@ if($item == false) {
 
 <?php $page_title = 'Item: ' . h($item->getGame()); ?>
 <?php include(SHARED_PATH . '/admin_header.php'); ?>
-<div id="content">
+<main>
 
   <a class="back-link" href="<?php echo url_for('admin/inventory/index.php'); ?>">&laquo; Back to List</a>
 
@@ -53,5 +53,5 @@ if($item == false) {
     <dt>Available After/Due By:</dt>
     <dd><time datetime=<?= $item->available_after_inv?>><?php echo h($item->available_after_inv); ?></time></dd>
   </dl>
-</div>
+</main>
 <?php include(SHARED_PATH . '/user_footer.php'); ?>

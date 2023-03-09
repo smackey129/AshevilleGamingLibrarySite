@@ -25,7 +25,7 @@ if(is_post_request()) {
 
 <?php $page_title = 'Create User'; ?>
 <?php include(SHARED_PATH . '/admin_header.php'); ?>
-
+<main>
     <h1>Create User</h1>
 
     <?php echo display_errors($user->errors); ?>
@@ -34,7 +34,7 @@ if(is_post_request()) {
 
       <?php include('form_fields.php'); ?>
 
-        <input type="submit" value="Create Member" />
+        <input type="submit" value="Create Member">
     </form>
-
+</main>
 <?php include(SHARED_PATH . '/user_footer.php'); ?>

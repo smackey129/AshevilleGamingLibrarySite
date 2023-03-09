@@ -7,8 +7,8 @@ $checkouts = $user->getCheckouts();
 
 ?>
 
-
-<h2>My Checked Out Games</h2>
+<main>
+  <h1>My Checked Out Games</h1>
 
   	<table border="1">
       <tr>
@@ -27,5 +27,5 @@ $checkouts = $user->getCheckouts();
     	  </tr>
       <?php } ?>
   	</table>
-
+</main>
 <?php include(SHARED_PATH . '/user_footer.php');

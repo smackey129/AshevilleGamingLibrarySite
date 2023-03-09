@@ -28,7 +28,7 @@ if(is_post_request()) {
 <?php $page_title = 'Delete User'; ?>
 <?php include(SHARED_PATH . '/admin_header.php'); ?>
 
-<div id="content">
+<main>
 
   <a class="back-link" href="<?php echo 'index.php'; ?>">&laquo; Back to List</a>
 
@@ -44,6 +44,6 @@ if(is_post_request()) {
     </form>
   </div>
 
-</div>
+</main>
 
 <?php include(SHARED_PATH . '/user_footer.php'); ?>

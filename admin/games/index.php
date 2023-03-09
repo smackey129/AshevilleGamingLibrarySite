@@ -4,9 +4,9 @@
   $page_title = 'Games'; 
   include(SHARED_PATH . '/admin_header.php'); 
 ?>
-
-<h2>Games</h2>
-<a href='new.php'>Add New Game</a>
+<main>
+  <h1>Games</h1>
+  <a href='new.php'>Add New Game</a>
   	<table border="1">
       <tr>
         <th>ID</th>
@@ -34,4 +34,5 @@
     	  </tr>
       <?php } ?>
   	</table>
+</main>
 <?php include(SHARED_PATH . '/user_footer.php'); ?>

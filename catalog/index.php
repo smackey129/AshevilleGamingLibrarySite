@@ -10,25 +10,25 @@ else {
 }
 
 ?>
+<main>
+  <h1>Game Catalog</h1>
 
-<h2>Game Catalog</h2>
+  <table border="1">
+    <tr>
+      <th>Game</th>
+      <th>Console</th>
+      <th>Condition</th>
+      <th>Available?</th>
+    </tr>
 
-<table border="1">
+    <?php foreach($inventory as $item) { ?>
       <tr>
-        <th>Game</th>
-        <th>Console</th>
-        <th>Condition</th>
-        <th>Available?</th>
+        <td><a href="<?= 'view.php?id=' . h(u($item->id));?>"> <?= ($item->getGame()); ?></td>
+        <td><?= h($item->getConsole()); ?></td>
+        <td><?= h($item->condition_inv); ?></td>
+        <td><?= h($item->getAvailability()); ?></td>
       </tr>
-
-      <?php foreach($inventory as $item) { ?>
-        <tr>
-          <td><a href="<?= 'view.php?id=' . h(u($item->id));?>"> <?= h($item->getGame()); ?></td>
-          <td><?= h($item->getConsole()); ?></td>
-          <td><?= h($item->condition_inv); ?></td>
-          <td><?= h($item->getAvailability()); ?></td>
-    	  </tr>
-      <?php } ?>
-  	</table>
-
+    <?php } ?>
+  </table>
+</main>
 <?php include(SHARED_PATH . '/user_footer.php'); ?>

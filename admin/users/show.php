@@ -17,7 +17,7 @@ if($user == false) {
 
 <?php $page_title = 'User: ' . h($user->username_usr); ?>
 <?php include(SHARED_PATH . '/admin_header.php'); ?>
-<div id="content">
+<main>
 
   <a class="back-link" href="<?php echo url_for('admin/users/index.php'); ?>">&laquo; Back to List</a>
 
@@ -68,5 +68,5 @@ if($user == false) {
     <dt>User Level</dt>
     <dd><?php echo h($user->user_level_usr); ?></dd>
   </dl>
-</div>
+</main>
 <?php include(SHARED_PATH . '/user_footer.php'); ?>

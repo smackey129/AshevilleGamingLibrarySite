@@ -9,8 +9,8 @@ else {
 }
 
 ?>
-
-<h1>About Us</h1>
-<p>Asheville Game Library is a fictional website created for a WEB289 Project at Asheville-Buncombe Technical Community College<p>
-
+<main>
+  <h1>About Us</h1>
+  <p>Asheville Game Library is a fictional website created for a WEB289 Project at Asheville-Buncombe Technical Community College<p>
+</main>
 <?php include(SHARED_PATH . '/user_footer.php'); ?>

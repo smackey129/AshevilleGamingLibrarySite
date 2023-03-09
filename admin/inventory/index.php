@@ -4,9 +4,9 @@
   $page_title = 'Inventory'; 
   include(SHARED_PATH . '/admin_header.php'); 
 ?>
-
-<h2>Inventory</h2>
-<a href="new.php">Add Inventory Item</a>
+<main>
+  <h1>Inventory</h1>
+  <a href="new.php">Add Inventory Item</a>
   	<table border="1">
       <tr>
         <th>ID</th>
@@ -38,5 +38,5 @@
     	  </tr>
       <?php } ?>
   	</table>
-
+</main>
 <?php include(SHARED_PATH . '/user_footer.php'); ?>

@@ -35,7 +35,7 @@ if(is_post_request()) {
 <?php $page_title = 'Edit Inventory Item'; ?>
 <?php include(SHARED_PATH . '/admin_header.php'); ?>
 
-<div id="content">
+<main>
 
   <a class="back-link" href="<?php echo 'index.php'; ?>">&laquo; Back to List</a>
 
@@ -55,6 +55,6 @@ if(is_post_request()) {
 
   </div>
 
-</div>
+</main>
 
 <?php include(SHARED_PATH . '/user_footer.php'); ?>

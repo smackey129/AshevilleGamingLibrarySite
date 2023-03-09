@@ -36,5 +36,5 @@ if(is_post_request()) {
 
         <input type="submit" value="Create Game" />
     </form>
-<main>
+</main>
 <?php include(SHARED_PATH . '/user_footer.php'); ?>

@@ -41,19 +41,19 @@ if(is_post_request()) {
 
 <?php $page_title = 'Log in'; ?>
 <?php //include(SHARED_PATH . '/staff_header.php'); ?>
-
+<main>
   <h1>Log in</h1>
 
   <?php echo display_errors($errors); ?>
 
   <form action="login.php" method="post">
-    Username:<br />
-    <input type="text" name="username" value="<?php echo h($username); ?>" /><br />
-    Password:<br />
-    <input type="password" name="password" value="" /><br />
-    <input type="submit" name="submit" value="Log In"  />
+    Username:<br>
+    <input type="text" name="username" value="<?php echo h($username); ?>" ><br>
+    Password:<br>
+    <input type="password" name="password" value=""><br>
+    <input type="submit" name="submit" value="Log In">
   </form>
 
-</div>
+</main>
 
 <?php include(SHARED_PATH . '/user_footer.php'); ?>

@@ -17,29 +17,24 @@ if($game == false) {
 
 <?php $page_title = 'Game: ' . h($game->name_gme); ?>
 <?php include(SHARED_PATH . '/admin_header.php'); ?>
-<div id="content">
-  <main>
-
-    <a class="back-link" href="<?php echo url_for('admin/games/index.php'); ?>">&laquo; Back to List</a>
-
+<main>
     
 
-    <h1>Game Name: <?php echo h($game->name_gme); ?></h1>
-    <dl>
-      <dt>ESRB Rating:</dt>
-      <dd><?php echo h($game->getRating()); ?></dd>
-    </dl>
+  <h1>Game Name: <?php echo h($game->name_gme); ?></h1>
+  <dl>
+    <dt>ESRB Rating:</dt>
+    <dd><?php echo h($game->getRating()); ?></dd>
+  </dl>
 
-    <dl>
-      <dt>Genre:</dt>
-      <dd><?php echo h($game->getGenre()); ?></dd>
-    </dl>
+  <dl>
+    <dt>Genre:</dt>
+    <dd><?php echo h($game->getGenre()); ?></dd>
+  </dl>
 
-    <dl>
-      <dt>Publisher</dt>
-      <dd><?php echo h($game->getPublisher()); ?></dd>
-    </dl>
-
-  </main>
-</div>
+  <dl>
+    <dt>Publisher</dt>
+    <dd><?php echo h($game->getPublisher()); ?></dd>
+  </dl>
+  
+</main>
 <?php include(SHARED_PATH . '/user_footer.php'); ?>

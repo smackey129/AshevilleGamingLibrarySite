@@ -10,6 +10,6 @@ else {
 } 
 ?>
 <main>
-  <h2>Search Page Stub</h2>
+  <h1>Search Page Stub</h1>
 </main>
 <?php include(SHARED_PATH . '/user_footer.php'); ?>

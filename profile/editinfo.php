@@ -31,7 +31,7 @@ if(is_post_request()) {
 <?php $page_title = 'Edit My Information'; ?>
 <?php include(SHARED_PATH . '/user_header.php'); ?>
 
-<div id="content">
+<main>
 
   <div class="bicycle edit">
     <h2>Edit My Information</h2>
@@ -43,12 +43,12 @@ if(is_post_request()) {
       <?php include('../users/form_fields.php'); ?>
 
       <div id="operations">
-        <input type="submit" value="Save Changes" />
+        <input type="submit" value="Save Changes">
       </div>
     </form>
 
   </div>
 
-</div>
+</main>
 
 <?php include(SHARED_PATH . '/user_footer.php'); ?>

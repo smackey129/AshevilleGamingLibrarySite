@@ -6,10 +6,12 @@ include(SHARED_PATH . '/admin_header.php');
 
 
 ?>
-
-<h1>Admin Area</h1>
-<a href="users">User List</a>
-<a href="games">Game List</a>
-<a href="inventory">Inventory List</a>
-
+<main>
+  <h1>Admin Area</h1>
+  <ul>
+    <li><a href="users">User List</a></li>
+    <li><a href="games">Game List</a></li>
+    <li><a href="inventory">Inventory List</a></li>
+  </ul>
+</main>
 <?php include(SHARED_PATH . '/user_footer.php'); ?>

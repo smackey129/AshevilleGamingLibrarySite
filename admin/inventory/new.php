@@ -25,7 +25,7 @@ if(is_post_request()) {
 
 <?php $page_title = 'Create Inventory Item'; ?>
 <?php include(SHARED_PATH . '/admin_header.php'); ?>
-
+<main>
     <h1>Create Inventory Item</h1>
 
     <?php echo display_errors($item->errors); ?>
@@ -36,5 +36,5 @@ if(is_post_request()) {
 
         <input type="submit" value="Create Item" />
     </form>
-
+</main>
 <?php include(SHARED_PATH . '/user_footer.php'); ?>
