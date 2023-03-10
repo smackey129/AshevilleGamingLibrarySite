@@ -3,14 +3,13 @@
 $page_title = $session->username . '\'s Wish List'; 
 include(SHARED_PATH . '/user_header.php'); 
 $user = User::find_by_username($session->username);
-$checkouts = $user->getCheckouts();
 $games = $user->getWishList();
 ?>
 
-
-<h2>My Wish List (Placeholder Content)</h2>
-
-<table border="1">
+<main>
+  <h1>My Wish List (Placeholder Content)</h1>
+  <div class="table">
+    <table>
       <tr>
         <th>Name</th>
         <th>ESRB Rating</th>
@@ -29,5 +28,6 @@ $games = $user->getWishList();
     	  </tr>
       <?php } ?>
   	</table>
-
+  </div>
+</main>
 <?php include(SHARED_PATH . '/user_footer.php');

@@ -16,8 +16,8 @@ else {
 <main>
   <h1>Database Table Examples</h1>
   <h2>Users</h2>
-
-  	<table border="1">
+  <div class="table">
+  	<table>
       <tr>
         <th>ID</th>
         <th>First name</th>
@@ -46,10 +46,10 @@ else {
     	  </tr>
       <?php } ?>
   	</table>
-
-    <h2>Inventory</h2>
-
-  	<table border="1">
+  </div>
+  <h2>Inventory</h2>
+    <div class="table">
+  	<table>
       <tr>
         <th>ID</th>
         <th>Game</th>
@@ -74,10 +74,10 @@ else {
     	  </tr>
       <?php } ?>
   	</table>
-
-    <h2>Games</h2>
-
-  	<table border="1">
+  </div>
+  <h2>Games</h2>
+  <div class="table">
+  	<table>
       <tr>
         <th>ID</th>
         <th>Name</th>
@@ -98,5 +98,6 @@ else {
     	  </tr>
       <?php } ?>
   	</table>
+  </div>
 </main>
 <?php include(SHARED_PATH . '/user_footer.php'); ?>

@@ -7,10 +7,10 @@ $donations = $user->getDonations();
 
 ?>
 
-
-<h2>My Donations</h2>
-
-  	<table border="1">
+<main>
+  <h1>My Donations</h1>
+  <div class="table">
+  	<table>
       <tr>
         <th>ID</th>
         <th>Game</th>
@@ -33,5 +33,6 @@ $donations = $user->getDonations();
     	  </tr>
       <?php } ?>
   	</table>
-
+  </div>
+</main>
 <?php include(SHARED_PATH . '/user_footer.php');

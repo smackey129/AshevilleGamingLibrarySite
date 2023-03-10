@@ -6,8 +6,8 @@
 ?>
 
 <h2>Users</h2>
-
-<table border="1">
+<div class="table">
+<table>
   <tr>
     <th>ID</th>
     <th>First name</th>
@@ -36,5 +36,5 @@
     </tr>
   <?php } ?>
 </table>
-
+</div>
 <?php include(SHARED_PATH . '/user_footer.php'); ?>

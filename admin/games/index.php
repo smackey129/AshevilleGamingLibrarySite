@@ -7,7 +7,8 @@
 <main>
   <h1>Games</h1>
   <a href='new.php'>Add New Game</a>
-  	<table border="1">
+  <div class="table">
+  	<table>
       <tr>
         <th>ID</th>
         <th>Name</th>
@@ -34,5 +35,6 @@
     	  </tr>
       <?php } ?>
   	</table>
+  </div>
 </main>
 <?php include(SHARED_PATH . '/user_footer.php'); ?>

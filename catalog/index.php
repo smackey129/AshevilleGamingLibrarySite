@@ -12,23 +12,24 @@ else {
 ?>
 <main>
   <h1>Game Catalog</h1>
-
-  <table border="1">
-    <tr>
-      <th>Game</th>
-      <th>Console</th>
-      <th>Condition</th>
-      <th>Available?</th>
-    </tr>
-
-    <?php foreach($inventory as $item) { ?>
+  <div class="table">
+    <table>
       <tr>
-        <td><a href="<?= 'view.php?id=' . h(u($item->id));?>"> <?= ($item->getGame()); ?></td>
-        <td><?= h($item->getConsole()); ?></td>
-        <td><?= h($item->condition_inv); ?></td>
-        <td><?= h($item->getAvailability()); ?></td>
+        <th>Game</th>
+        <th>Console</th>
+        <th>Condition</th>
+        <th>Available?</th>
       </tr>
-    <?php } ?>
-  </table>
+
+      <?php foreach($inventory as $item) { ?>
+        <tr>
+          <td><a href="<?= 'view.php?id=' . h(u($item->id));?>"> <?= ($item->getGame()); ?></td>
+          <td><?= h($item->getConsole()); ?></td>
+          <td><?= h($item->condition_inv); ?></td>
+          <td><?= h($item->getAvailability()); ?></td>
+        </tr>
+      <?php } ?>
+    </table>
+  </div>
 </main>
 <?php include(SHARED_PATH . '/user_footer.php'); ?>
