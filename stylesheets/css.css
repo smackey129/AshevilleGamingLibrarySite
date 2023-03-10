@@ -1,8 +1,17 @@
+:root {
+  --main-bg-color: rgb(151, 106, 92);
+  --main-bg-color1: rgb(151, 106, 92);
+  --main-text-color: #fff;
+  --main-link-color: #fff;
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
+  background-color: var(--main-bg-color);
+  color: var(--main-text-color);
   margin: 0;
 }
 
@@ -16,9 +25,9 @@ img {
   max-width: 100%;
 }
 
-/* header h1 {
-  text-align: center;
-} */
+a {
+  color: var(--main-link-color);
+}
 
 header {
   align-items: center;
@@ -33,7 +42,6 @@ nav {
 #user_links {
   border: 2px solid #000;
   border-radius: 15px;
-  display: inline-block;
   margin: 1rem 0;
   padding: 1rem;
   text-align: left;
@@ -57,7 +65,9 @@ nav {
 }
 
 #navbar a:hover {
-  background-color: #000;
+  background-color: #9f7a6d;
+  border-radius: 15px;
+  box-shadow: 0px 0px 20px inset #000;
   color: #fff;
 }
 
@@ -73,4 +83,42 @@ nav {
   flex: 1;
   list-style: none;
   text-align: center;
+}
+
+.table {
+  border: 1px solid #ddd;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+th {
+  width: auto;
+}
+
+td {
+  padding: 1rem;
+  width: auto;
+}
+
+/* Media Queries */
+@media screen and (max-width: 700px) {
+  header {
+    display: block;
+    text-align: center;
+  }
+
+  #user_links {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  #navbar {
+    display: block;
+  }
 }
