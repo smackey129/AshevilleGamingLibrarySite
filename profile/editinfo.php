@@ -34,7 +34,7 @@ if(is_post_request()) {
 <main>
 
   <div class="bicycle edit">
-    <h2>Edit My Information</h2>
+    <h1>Edit My Information</h1>
 
     <?php echo display_errors($user->errors); ?>
 
