@@ -26,7 +26,7 @@ else {
 ?>
 <main>
 
-    <a class="back-link" href="<?php echo url_for('catalog/index.php'); ?>">&laquo; Back to List</a>
+    <a class="back-link" href="<?php echo url_for('catalog/index.php'); ?>">&laquo; Back to Catalog</a>
 
     <h1>Game Name: <?php echo h($game->name_gme); ?></h1>
     <dl>
