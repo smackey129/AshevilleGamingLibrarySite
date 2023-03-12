@@ -22,7 +22,7 @@ class InventoryItem extends DatabaseObject {
     $this->id_usr_inv = $args['id_usr_inv'] ?? NULL;
     $this->id_usrdonator_inv = $args['id_usrdonator_inv'] ?? '';
     $this->available_inv = $args['available_inv'] ?? '0';
-    $this->available_after_inv = $args['available_after_inv'] ?? '';
+    $this->available_after_inv = $args['available_after_inv'] ?? date("Y/m/d");
   }
 
   public function getGame() {
