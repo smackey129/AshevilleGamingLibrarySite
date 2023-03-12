@@ -7,39 +7,39 @@ if(!isset($user)) {
 ?>
 
 <dl>
-  <dt>First name</dt>
-  <dd><input type="text" name="user[fname_usr]" value="<?php echo h($user->fname_usr); ?>"></dd>
+  <dt><label for="user[fname_usr]">First name</label></dt>
+  <dd><input type="text" name="user[fname_usr]" value="<?php echo h($user->fname_usr); ?>" required id="user[fname_usr]"></dd>
 </dl>
 
 <dl>
-  <dt>Last name</dt>
-  <dd><input type="text" name="user[lname_usr]" value="<?php echo h($user->lname_usr); ?>"></dd>
+  <dt><label for="user[lname_usr]">Last name</label></dt>
+  <dd><input type="text" name="user[lname_usr]" value="<?php echo h($user->lname_usr); ?>" required id="user[lname_usr]"></dd>
 </dl>
 
 <dl>
-  <dt>Email</dt>
-  <dd><input type="text" name="user[email_usr]" value="<?php echo h($user->email_usr); ?>"></dd>
+  <dt><label for="user[email_usr]">Email</label></dt>
+  <dd><input type="text" name="user[email_usr]" value="<?php echo h($user->email_usr); ?>" required id="user[email_usr]"></dd>
 </dl>
 
 <dl>
-  <dt>Username</dt>
-  <dd><input type="text" name="user[username_usr]" value="<?php echo h($user->username_usr); ?>"></dd>
+  <dt><label for="user[username_usr]">Username</label></dt>
+  <dd><input type="text" name="user[username_usr]" value="<?php echo h($user->username_usr); ?>" required id="user[username_usr]"></dd>
 </dl>
 
 <dl>
-  <dt>Street Address</dt>
-  <dd><input type="text" name="user[street_address_usr]" value="<?php echo h($user->street_address_usr); ?>"></dd>
+  <dt><label for="user[street_address_usr]">Street Address</label></dt>
+  <dd><input type="text" name="user[street_address_usr]" value="<?php echo h($user->street_address_usr); ?>" required id="user[street_address_usr]"></dd>
 </dl>
 
 <dl>
-  <dt>City</dt>
-  <dd><input type="text" name="user[city_usr]" value="<?php echo h($user->city_usr); ?>"></dd>
+  <dt><label for="user[city_usr]">City</label></dt>
+  <dd><input type="text" name="user[city_usr]" value="<?php echo h($user->city_usr); ?>" required id="user[city_usr]"></dd>
 </dl>
 
 <dl>
-  <dt>State</dt>
+  <dt><label for="user[id_sta_usr]">State</label></dt>
   <dd>
-    <select name="user[id_sta_usr]">
+    <select name="user[id_sta_usr]" required id="user[id_sta_usr]">
       <option value=""></option>
     <?php for($state_id = 1; $state_id <= 51; $state_id++) { ?>
       <option value="<?php echo $state_id; ?>" <?php if($user->id_sta_usr == $state_id) { echo 'selected'; } ?>><?php echo User::getStateNameById($state_id); ?></option>
@@ -49,14 +49,14 @@ if(!isset($user)) {
 </dl>
 
 <dl>
-  <dt>Zip Code</dt>
-  <dd><input type="text" name="user[zip_usr]" value="<?php echo h($user->zip_usr); ?>"></dd>
+  <dt><label for="user[zip_usr]">Zip Code</label></dt>
+  <dd><input type="text" name="user[zip_usr]" value="<?php echo h($user->zip_usr); ?>" required id="user[zip_usr]"></dd>
 </dl>
 
 <dl>
-  <dt>User Level</dt>
+  <dt><label for="user[user_level_usr]">User Level</label></dt>
   <dd>
-    <select name="user[user_level_usr]">
+    <select name="user[user_level_usr]" required id="user[user_level_usr]">
       <option value="user" <?php if($user->user_level_usr == "user") {echo 'selected';}?>>User</option>
       <option value="admin" <?php if($user->user_level_usr == "admin") {echo 'selected';}?>>Admin</option>
     </select>
@@ -64,11 +64,11 @@ if(!isset($user)) {
 </dl>
 
 <dl>
-  <dt>Password</dt>
-  <dd><input type="password" name="user[password]" value=""></dd>
+  <dt><label for="user[password]">Password</label></dt>
+  <dd><input type="password" name="user[password]" value="" id="user[password]"></dd>
 </dl>
 
 <dl>
-  <dt>Confirm Password</dt>
-  <dd><input type="password" name="user[confirm_password]" value=""></dd>
+  <dt><label for="user[confirm_password]">Confirm Password</label></dt>
+  <dd><input type="password" name="user[confirm_password]" value="" id="user[confirm_password]"></dd>
 </dl>

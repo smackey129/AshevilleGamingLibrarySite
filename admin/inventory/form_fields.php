@@ -13,9 +13,9 @@ if(!isset($item)) {
 ?>
 
 <dl>
-  <dt>Game</dt>
+  <dt><label for="item[id_gme_inv]">Game</label></dt>
   <dd>
-    <select name="item[id_gme_inv]" required>
+    <select name="item[id_gme_inv]" id="item[id_gme_inv]" required>
       <option value="">Select Game</option>
     <?php foreach($games as $game) { ?>
       <option value="<?php echo $game->id; ?>" <?php if($item->id_gme_inv == $game->id) { echo 'selected'; } ?>><?php echo $game->name_gme; ?></option>
@@ -25,9 +25,9 @@ if(!isset($item)) {
 </dl>
 
 <dl>
-  <dt>Console</dt>
+  <dt><label for="item[id_con_inv]">Console</label></dt>
   <dd>
-    <select name="item[id_con_inv]" required>
+    <select name="item[id_con_inv]" id="item[id_con_inv]" required>
       <option value="">Select Console</option>
     <?php foreach($consoles as $console) { ?>
       <option value="<?php echo $console->id; ?>" <?php if($item->id_con_inv == $console->id) { echo 'selected'; } ?>><?php echo $console->name_con; ?></option>
@@ -37,9 +37,9 @@ if(!isset($item)) {
 </dl>
 
 <dl>
-  <dt>User Level</dt>
+  <dt><label for="item[condition_inv]">Condition</label></dt>
   <dd>
-    <select name="item[condition_inv]" required>
+    <select name="item[condition_inv]" id="item[condition_inv]" required>
       <option value="">Select Condition</option>
       
       <?php foreach(InventoryItem::$conditions as $condition) { ?>
@@ -50,9 +50,9 @@ if(!isset($item)) {
 </dl>
 
 <dl>
-  <dt>Current User</dt>
+  <dt><label for="item[id_usr_inv]">Current User</label></dt>
   <dd>
-    <select name="item[id_usr_inv]">
+    <select name="item[id_usr_inv]" id="item[id_usr_inv]">
       <option value="">Not Currently Checked Out</option>
     <?php foreach($users as $user) { ?>
       <option value="<?php echo $user->id; ?>" <?php if($item->id_usr_inv == $user->id) { echo 'selected'; } ?>><?php echo $user->username_usr; ?></option>
@@ -62,9 +62,9 @@ if(!isset($item)) {
 </dl>
 
 <dl>
-  <dt>Donator</dt>
+  <dt><label for="item[id_usrdonator_inv]">Donator</label></dt>
   <dd>
-    <select name="item[id_usrdonator_inv]" required>
+    <select name="item[id_usrdonator_inv]" id="item[id_usrdonator_inv]" required>
       <option value="">Select Donator</option>
     <?php foreach($users as $user) { ?>
       <option value="<?php echo $user->id; ?>" <?php if($item->id_usrdonator_inv == $user->id) { echo 'selected'; } ?>><?php echo $user->username_usr; ?></option>
@@ -84,7 +84,7 @@ if(!isset($item)) {
 
 
 <dl>
-  <dt>Available After/Due By:</dt>
-  <dd><input type="date" name="item[available_after_inv]" value="<?= $item->available_after_inv?>">
+  <dt><label for="item[available_after_inv]">Available After/Due By:</label></dt>
+  <dd><input type="date" name="item[available_after_inv]" value="<?= $item->available_after_inv?>" id="item[available_after_inv]" required>
   </dd>
 </dl>

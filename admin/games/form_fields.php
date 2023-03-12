@@ -10,14 +10,14 @@ $companies = Company::find_all();
 ?>
 
 <dl>
-  <dt>Game Name</dt>
-  <dd><input type="text" name="game[name_gme]" value="<?php echo h($game->name_gme); ?>" required></dd>
+  <dt><label for="game[name_gme]">Game Name</label></dt>
+  <dd><input type="text" name="game[name_gme]" value="<?php echo h($game->name_gme); ?>" id="game[name_gme]" required></dd>
 </dl>
 
 <dl>
-  <dt>ESRB Rating</dt>
+  <dt><label for="game[id_age_gme]">ESRB Rating</label></dt>
   <dd>
-    <select name="game[id_age_gme]" required>
+    <select name="game[id_age_gme]" id="game[id_age_gme]" required>
     <option value="">Select ESRB Rating</option>
     <?php foreach($ratings as $rating) { ?>
       <option value="<?php echo $rating->id; ?>" <?php if($game->id_age_gme == $rating->id) { echo 'selected'; } ?>><?php echo $rating->esrb_rating_age; ?></option>
@@ -27,9 +27,9 @@ $companies = Company::find_all();
 </dl>
 
 <dl>
-  <dt>Genre</dt>
+  <dt><label for="game[id_gnr_gme]">Genre</label></dt>
   <dd>
-    <select name="game[id_gnr_gme]" required>
+    <select name="game[id_gnr_gme]" id="game[id_gnr_gme]" required>
     <option value="">Select Genre</option>
     <?php foreach($genres as $genre) { ?>
       <option value="<?php echo $genre->id; ?>" <?php if($game->id_gnr_gme == $genre->id) { echo 'selected'; } ?>><?php echo $genre->genre_gnr; ?></option>
@@ -39,9 +39,9 @@ $companies = Company::find_all();
 </dl>
 
 <dl>
-  <dt>Publisher</dt>
+  <dt><label for="game[id_cmppub_gme]">Publisher</label></dt>
   <dd>
-    <select name="game[id_cmppub_gme]" required>
+    <select name="game[id_cmppub_gme]" id="game[id_cmppub_gme]" required>
     <option value="">Select Publisher</option>
     <?php foreach($companies as $publisher) { ?>
       <option value="<?php echo $publisher->id; ?>" <?php if($game->id_cmppub_gme == $publisher->id) { echo 'selected'; } ?>><?php echo $publisher->name_cmp; ?></option>
