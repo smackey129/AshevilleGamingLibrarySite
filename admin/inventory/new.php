@@ -26,6 +26,8 @@ if(is_post_request()) {
 <?php $page_title = 'Create Inventory Item'; ?>
 <?php include(SHARED_PATH . '/admin_header.php'); ?>
 <main>
+  <a class="back-link" href="<?php echo 'index.php'; ?>">&laquo; Back to List</a>
+
     <h1>Create Inventory Item</h1>
 
     <?php echo display_errors($item->errors); ?>

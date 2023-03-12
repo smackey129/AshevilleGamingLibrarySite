@@ -5,6 +5,7 @@
   include(SHARED_PATH . '/admin_header.php'); 
 ?>
 <main>
+  <a href='<?= url_for("/admin") ?>'>&laquo; Back to Admin Area</a><br>
   <h1>Games</h1>
   <a href='new.php'>Add New Game</a>
   <div class="table">

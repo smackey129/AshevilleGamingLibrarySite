@@ -19,9 +19,7 @@ if($item == false) {
 <?php include(SHARED_PATH . '/admin_header.php'); ?>
 <main>
 
-  <a class="back-link" href="<?php echo url_for('admin/inventory/index.php'); ?>">&laquo; Back to List</a>
-
-  
+  <a class="back-link" href="<?php echo 'index.php'; ?>">&laquo; Back to List</a>
 
   <h1>Item: <?php echo h($item->getGame()); ?></h1>
   <dl>
