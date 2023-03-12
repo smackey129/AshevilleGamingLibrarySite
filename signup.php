@@ -10,7 +10,8 @@ if(is_post_request()) {
 
   if($result === true) {
     $new_id = $user->id;
-    $session->message('The user was created successfully.');
+    $session->message('Thank you for signing up!.');
+    $session->login($user); 
     redirect_to(url_for('index.php'));
   } else {
     // show errors
@@ -34,7 +35,7 @@ if(is_post_request()) {
 
       <?php include('users/form_fields.php'); ?>
 
-        <input type="submit" value="Create Member" />
+        <input type="submit" value="Create Member">
     </form>
 </main>
 <?php include(SHARED_PATH . '/user_footer.php'); ?>
