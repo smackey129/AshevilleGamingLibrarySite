@@ -8,7 +8,7 @@ include(SHARED_PATH . '/admin_header.php');
 ?>
 <main>
   <h1>Admin Area</h1>
-  <ul>
+  <ul id="link_options">
     <li><a href="users">User List</a></li>
     <li><a href="games">Game List</a></li>
     <li><a href="inventory">Inventory List</a></li>

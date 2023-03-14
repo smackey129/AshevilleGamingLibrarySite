@@ -6,7 +6,7 @@ include(SHARED_PATH . '/user_header.php');
 ?>
 <main>
   <h1><?= $session->username ."'s Profile Page"?></h1>
-  <ul>
+  <ul id="link_options">
     <li><a href="editinfo.php">Edit My Information</a></li>
     <li><a href="mydonations.php">My Donated Games</a></li>
     <li><a href="mycheckouts.php">My Checked Out Games</a></li>
