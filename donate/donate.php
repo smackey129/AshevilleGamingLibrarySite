@@ -29,7 +29,7 @@ if(is_post_request()) {
 
 <?php $page_title = 'Donate Item'; ?>
 <?php include(SHARED_PATH . '/user_header.php'); ?>
-<main>
+<main role="main" id="main-content" tabindex="-1">
     <h1>Donate A Game</h1>
 
     <?php echo display_errors($item->errors); ?>

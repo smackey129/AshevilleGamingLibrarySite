@@ -13,7 +13,7 @@ else {
 }
 
 ?>
-<main>
+<main role="main" id="main-content" tabindex="-1">
   <h1>Welcome to the Asheville Game Library</h1>
   
 </main>

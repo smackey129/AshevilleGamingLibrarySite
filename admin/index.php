@@ -6,7 +6,7 @@ include(SHARED_PATH . '/admin_header.php');
 
 
 ?>
-<main>
+<main role="main" id="main-content" tabindex="-1">
   <h1>Admin Area</h1>
   <ul id="link_options">
     <li><a href="users">User List</a></li>

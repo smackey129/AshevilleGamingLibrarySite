@@ -10,7 +10,7 @@ else {
 }
 
 ?>
-<main>
+<main role="main" id="main-content" tabindex="-1">
   <h1>Game Catalog</h1>
   <div class="table">
     <table>

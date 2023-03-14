@@ -24,7 +24,7 @@ else {
   include(SHARED_PATH . '/public_header.php'); 
 } 
 ?>
-<main>
+<main role="main" id="main-content" tabindex="-1">
 
     <a class="back-link" href="<?php echo url_for('catalog/index.php'); ?>">&laquo; Back to Catalog</a>
 

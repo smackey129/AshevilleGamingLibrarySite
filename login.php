@@ -41,7 +41,7 @@ if(is_post_request()) {
 
 <?php $page_title = 'Log in'; ?>
 <?php //include(SHARED_PATH . '/staff_header.php'); ?>
-<main>
+<main role="main" id="main-content" tabindex="-1">
   <h1>Log in</h1>
 
   <?php echo display_errors($errors); ?>

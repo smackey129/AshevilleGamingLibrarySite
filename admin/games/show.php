@@ -17,7 +17,7 @@ if($game == false) {
 
 <?php $page_title = 'Game: ' . h($game->name_gme); ?>
 <?php include(SHARED_PATH . '/admin_header.php'); ?>
-<main>
+<main role="main" id="main-content" tabindex="-1">
   <a class="back-link" href="<?php echo 'index.php'; ?>">&laquo; Back to List</a>
 
   <h1>Game Name: <?php echo h($game->name_gme); ?></h1>

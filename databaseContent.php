@@ -13,7 +13,7 @@ else {
 }
 
 ?>
-<main>
+<main role="main" id="main-content" tabindex="-1">
   <h1>Database Table Examples</h1>
   <h2>Users</h2>
   <div class="table">

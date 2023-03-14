@@ -4,7 +4,7 @@
   $page_title = 'Games'; 
   include(SHARED_PATH . '/admin_header.php'); 
 ?>
-<main>
+<main role="main" id="main-content" tabindex="-1">
   <a href='<?= url_for("/admin") ?>'>&laquo; Back to Admin Area</a><br>
   <h1>Games</h1>
   <a href='new.php'>Add New Game</a>

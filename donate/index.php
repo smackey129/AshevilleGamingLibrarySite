@@ -13,7 +13,7 @@ else {
 }
 
 ?>
-<main>
+<main role="main" id="main-content" tabindex="-1">
   <h1>Donate A Game</h1>
   <?php
     if($session->is_logged_in()) { ?>

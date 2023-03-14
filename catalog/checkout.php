@@ -22,7 +22,7 @@ if($game == false) {
 
 <?php $page_title = 'Checkout: ' . h($game->name_gme); ?>
 <?php include(SHARED_PATH . '/user_header.php'); ?>
-<main>
+<main role="main" id="main-content" tabindex="-1">
   <h1>Thank You!</h1>
   <?php $item->checkout($user); ?>
 </main>

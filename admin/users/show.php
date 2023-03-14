@@ -17,7 +17,7 @@ if($user == false) {
 
 <?php $page_title = 'User: ' . h($user->username_usr); ?>
 <?php include(SHARED_PATH . '/admin_header.php'); ?>
-<main>
+<main role="main" id="main-content" tabindex="-1">
 
   <a class="back-link" href="<?php echo url_for('admin/users/index.php'); ?>">&laquo; Back to List</a>
 

@@ -28,7 +28,7 @@ if(is_post_request()) {
 <?php $page_title = 'Delete User'; ?>
 <?php include(SHARED_PATH . '/admin_header.php'); ?>
 
-<main>
+<main role="main" id="main-content" tabindex="-1">
 
   <a class="back-link" href="<?php echo 'index.php'; ?>">&laquo; Back to List</a>
 

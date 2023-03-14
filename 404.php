@@ -9,7 +9,7 @@ else {
   include(SHARED_PATH . '/public_header.php'); 
 }
 ?>
-<main>
+<main role="main" id="main-content" tabindex="-1">
   <h1>Page Not Found!</h1>
   <p>We're Sorry, this page doesn't exist on this website</p>
 </main>

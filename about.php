@@ -9,7 +9,7 @@ else {
 }
 
 ?>
-<main>
+<main role="main" id="main-content" tabindex="-1">
   <h1>About Us</h1>
   <p>Asheville Game Library is a fictional website created for a WEB289 Project at Asheville-Buncombe Technical Community College<p>
 </main>
