@@ -18,6 +18,28 @@ class Game extends DatabaseObject {
     $this->id_cmppub_gme = $args['id_cmppub_gme'] ?? '';
   }
 
+  protected function validate() {
+    $this->errors = [];
+  
+    if(is_blank($this->name_gme)) {
+      $this->errors[] = "Game Name cannot be blank";
+    }
+
+    if(is_blank($this->id_age_gme)) {
+      $this->errors[] = "Please select an age rating";
+    }
+
+    if(is_blank($this->id_gnr_gme)) {
+      $this->errors[] = "Please select a genre";
+    }
+
+    if(is_blank($this->id_cmppub_gme)) {
+      $this->errors[] = "Please select a publisher";
+    }
+
+    return $this->errors;
+  }
+
   public function getRating() {
     $sql = "SELECT esrb_rating_age FROM esrb_ratings_age WHERE id='" . $this->id_age_gme. "'";
     $result = self::$database->query($sql);
