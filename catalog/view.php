@@ -49,12 +49,17 @@ else {
       <dd><?php echo h($game->getPublisher()); ?></dd>
     </dl>
 
-    <?php 
-    if(isset($session->user_level) && $item->available_inv){ ?>
       <form action="checkout.php?id=<?= h(u($item->id));?>" method="POST">
-        <input type="submit" name="checkout" value="Check Out Game">
+        <?php 
+          if(isset($session->user_level) && $item->available_inv){ ?>
+          <input type="submit" name="checkout" value="Check Out Game">
+        <?php }
+          elseif(!$item->available_inv){ ?>
+          <input type="submit" name="checkout" value="This game is currently unavailable" disabled>
+        <?php }
+        else{ ?>
+          <a class='button' href='<?= url_for('login.php')?>'>Sign in to check out a game</a>
+        <?php }?>
       </form>
-    <?php }
-    ?>
 </main>
 <?php include(SHARED_PATH . '/user_footer.php'); ?>
