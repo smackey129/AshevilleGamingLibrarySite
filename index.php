@@ -1,6 +1,7 @@
 <?php require_once('private/initialize.php'); ?>
 
 <?php 
+$current_page = 1;
 $users = User::find_all(); 
 $inventory = InventoryItem::find_all();
 $games = Game::find_all();

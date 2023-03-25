@@ -1,5 +1,6 @@
 <?php require_once('private/initialize.php'); ?>
 <?php 
+$current_page = 2;
 $page_title = 'About Asheville Game Library'; 
 if(isset($session->user_level)){
   include(SHARED_PATH . '/user_header.php'); 

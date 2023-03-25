@@ -1,6 +1,6 @@
 <?php
 require_once('../private/initialize.php');
-
+$current_page = 4;
 if(is_post_request()) {
   $item = new InventoryItem;
   $args = $_POST['item'];

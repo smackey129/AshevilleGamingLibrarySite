@@ -1,6 +1,8 @@
 <?php require_once('../private/initialize.php');   ?>
 
-<?php $page_title = 'Search Page'; ?>
+<?php $page_title = 'Search Page'; 
+$current_page = 3;
+?>
 <?php
 if(isset($session->user_level)){
   include(SHARED_PATH . '/user_header.php'); 

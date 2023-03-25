@@ -1,7 +1,7 @@
 <?php require_once('../private/initialize.php');   ?>
 
 <?php
-
+$current_page = 3;
 if(!isset($_GET['id']) || !is_post_request()) {
   redirect_to('index.php');
 }
