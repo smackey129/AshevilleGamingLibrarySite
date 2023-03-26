@@ -67,6 +67,11 @@ class InventoryItem extends DatabaseObject {
     }
   }
 
+  public static function getItemsAlphabetized() {
+    $sql = "SELECT inventory_inv.* FROM inventory_inv INNER JOIN games_gme ON games_gme.id = inventory_inv.id_gme_inv ORDER BY name_gme";
+    return(static::find_by_sql($sql));
+  }
+
   public function checkout($user) {
     echo "<p>The Item Has been Checked out for " . $user->username_usr ." (Not Really)";
   }
