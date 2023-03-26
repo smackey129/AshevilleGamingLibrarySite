@@ -32,7 +32,12 @@ if(is_post_request()) {
       redirect_to(url_for('index.php'));
     } else {
       // username not found or password does not match
-      $errors[] = "Log in was unsuccessful.";
+        if($user == false) {
+          $errors[] = "Username not found";
+        }
+        else {
+          $errors[] = "Username and password do not match.";
+        }
     }
   }
 }
