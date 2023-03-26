@@ -45,7 +45,7 @@ if(is_post_request()) {
 <?php include(SHARED_PATH . '/user_header.php'); ?>
 <main role="main" id="main-content" tabindex="-1">
     <h1>Donate A Game</h1>
-
+    <p>Fields marked with "*" are required</p>
     <?php echo display_errors(array_merge($item->errors, $new_game->errors)); ?>
 
     <form action="<?php echo 'donate.php'; ?>" method="post">

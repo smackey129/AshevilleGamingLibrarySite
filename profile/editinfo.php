@@ -35,12 +35,12 @@ if(is_post_request()) {
 
   <div class="bicycle edit">
     <h1>Edit My Information</h1>
-
+    <p>All fields marked with "*" must not be blank</p>
     <?php echo display_errors($user->errors); ?>
 
     <form action="editinfo.php" method="post">
 
-      <?php include('../users/form_fields.php'); ?>
+      <?php include('profile_form_fields.php'); ?>
 
       <div id="operations">
         <input type="submit" value="Save Changes">

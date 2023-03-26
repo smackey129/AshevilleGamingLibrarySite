@@ -28,7 +28,7 @@ if(is_post_request()) {
 <?php include(SHARED_PATH . '/public_header.php'); ?>
 <main role="main" id="main-content" tabindex="-1">
     <h1>Sign Up</h1>
-
+    <p>All fields marked with "*" are required</p>
     <?php echo display_errors($user->errors); ?>
 
     <form action="<?php echo url_for('signup.php'); ?>" method="post">

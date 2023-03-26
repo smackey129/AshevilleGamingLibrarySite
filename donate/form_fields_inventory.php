@@ -16,7 +16,7 @@ if(!isset($item)) {
 ?>
 
 <dl>
-  <dt><label for="item[id_gme_inv]">Game (If it isn't listed, select the "Not Listed" option)</label></dt>
+  <dt><label for="item[id_gme_inv]">* Game (If it isn't listed, select the "Not Listed" option)</label></dt>
   <dd>
     <select name="item[id_gme_inv]" id="item[id_gme_inv]" required>
       <option value="">Select Game</option>
@@ -31,12 +31,12 @@ if(!isset($item)) {
 <fieldset id="new_game_form">
   <legend>Can't find a game? Enter the details here.</legend>
   <dl>
-    <dt><label for="game[name_gme]">Game Name</label></dt>
+    <dt><label for="game[name_gme]">* Game Name</label></dt>
     <dd><input type="text" name="game[name_gme]" id="game[name_gme]"></dd>
   </dl>
 
   <dl>
-    <dt><label for="game[id_age_gme]">ESRB Rating</label></dt>
+    <dt><label for="game[id_age_gme]">* ESRB Rating</label></dt>
     <dd>
       <select name="game[id_age_gme]" id="game[id_age_gme]">
       <option value="">Select ESRB Rating</option>
@@ -48,7 +48,7 @@ if(!isset($item)) {
   </dl>
 
   <dl>
-    <dt><label for="game[id_gnr_gme]">Genre</label></dt>
+    <dt><label for="game[id_gnr_gme]">* Genre</label></dt>
     <dd>
       <select name="game[id_gnr_gme]" id="game[id_gnr_gme]">
       <option value="">Select Genre</option>
@@ -60,7 +60,7 @@ if(!isset($item)) {
   </dl>
 
   <dl>
-    <dt><label for="game[id_cmppub_gme]">Publisher</label></dt>
+    <dt><label for="game[id_cmppub_gme]">* Publisher</label></dt>
     <dd>
       <select name="game[id_cmppub_gme]" id="game[id_cmppub_gme]">
       <option value="">Select Publisher</option>
@@ -75,7 +75,7 @@ if(!isset($item)) {
 <script src="<?= url_for('js/newGame.js')?>" defer></script>
 
 <dl>
-  <dt><label for="item[id_con_inv]">Console</label></dt>
+  <dt><label for="item[id_con_inv]">* Console</label></dt>
   <dd>
     <select name="item[id_con_inv]" id="item[id_con_inv]" required>
       <option value="">Select Console</option>
@@ -87,7 +87,7 @@ if(!isset($item)) {
 </dl>
 
 <dl>
-  <dt><label for="item[condition_inv]">Condition</label></dt>
+  <dt><label for="item[condition_inv]">* Condition</label></dt>
   <dd>
     <select name="item[condition_inv]" id="item[condition_inv]" required>
       <option value="">Select Condition</option>

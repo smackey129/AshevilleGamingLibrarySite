@@ -54,11 +54,11 @@ if(!isset($user)) {
 </dl>
 
 <dl>
-  <dt><label for="user[password]">* Password</label></dt>
-  <dd><input type="password" name="user[password]" value="" id="user[password]" required></dd>
+  <dt><label for="user[password]">Password</label></dt>
+  <dd><input type="password" name="user[password]" value="" id="user[password]"></dd>
 </dl>
 
 <dl>
-  <dt><label for="user[confirm_password]">* Confirm Password</label></dt>
-  <dd><input type="password" name="user[confirm_password]" value="" id="user[confirm_password]" required></dd>
+  <dt><label for="user[confirm_password]">Confirm Password</label></dt>
+  <dd><input type="password" name="user[confirm_password]" value="" id="user[confirm_password]"></dd>
 </dl>
