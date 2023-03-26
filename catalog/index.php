@@ -1,7 +1,7 @@
 <?php require_once('../private/initialize.php'); ?>
 <?php 
 $current_page = 3;
-$inventory = InventoryItem::find_all();
+$inventory = InventoryItem::getItemsAlphabetized();
 $page_title = 'Game Catalog'; 
 if(isset($session->user_level)){
   include(SHARED_PATH . '/user_header.php'); 
