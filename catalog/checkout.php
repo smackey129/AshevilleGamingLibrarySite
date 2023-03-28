@@ -2,7 +2,7 @@
 
 <?php
 $current_page = 3;
-if(!isset($_GET['id']) || !is_post_request()) {
+if(!isset($_GET['id']) || !is_post_request() || !($session->is_logged_in())) {
   redirect_to('index.php');
 }
 
