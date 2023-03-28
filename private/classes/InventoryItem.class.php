@@ -73,7 +73,7 @@ class InventoryItem extends DatabaseObject {
   }
 
   public function checkout($user) {
-    echo "<p>The Item Has been Checked out for " . $user->username_usr ." (Not Really)";
+    echo "<p>The Item Has been Checked out for " . $user->username_usr ." (Or it will be when the feature is implemented) Come pick up the item at our location at *insert address here*</p>";
   }
 }
 ?>
