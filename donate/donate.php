@@ -25,8 +25,8 @@ if(is_post_request()) {
     $result = $item->save();
     if($result === true) {
       $new_id = $item->id;
-      $session->message('Thank you for your donation!');
-      redirect_to('index.php');
+      $session->message('Thank you for your donation! Either come in and drop off your game in person or mail it to us at our location at *insert address here*');
+      redirect_to(url_for('catalog/view.php?id=' . $item->id));
     } else {
       // show errors
     }
