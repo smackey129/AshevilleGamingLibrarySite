@@ -74,6 +74,19 @@ class InventoryItem extends DatabaseObject {
 
   public function checkout($user) {
     echo "<p>The Item Has been Checked out for " . $user->username_usr ." (Or it will be when the feature is implemented) Come pick up the item at our location at *insert address here*</p>";
+    $this->id_usr_inv = $user->id;
+    $this->available_inv = "0";
+    $now = new DateTime();
+    $return_date = $now->add(new DateInterval('P1W'))->format('Y-m-d');
+    $this->available_after_inv = $return_date;
+    $this->update();
+  }
+
+  public function return($user) {
+    $this->id_usr_inv = NULL;
+    $this->available_inv = "1";
+    $this->available_after_inv = date("Y-m-d");
+    $this->update();
   }
 }
 ?>
