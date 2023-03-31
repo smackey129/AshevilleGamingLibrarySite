@@ -9,6 +9,7 @@ if(!isset($_GET['id'])) {
 $id = $_GET['id'];
 $item = InventoryItem::find_by_id($id);
 $game = Game::find_by_id($item->id_gme_inv);
+$user = User::find_by_username($session->username);
 
 if($game == false) {
   redirect_to('index.php');
@@ -61,5 +62,11 @@ else {
           <a class='button' href='<?= url_for('login.php')?>'>Sign in to check out a game</a>
         <?php }?>
       </form>
+      <?php if($item->id_usr_inv == $user->id) { ?>
+        <form action="return.php?id=<?= h(u($item->id));?>" method="POST">
+          <input type="submit" value="Return Game">
+      </form>
+      <?php } ?>
+      
 </main>
 <?php include(SHARED_PATH . '/user_footer.php'); ?>

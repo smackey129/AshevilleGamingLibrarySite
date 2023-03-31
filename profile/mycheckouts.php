@@ -24,6 +24,11 @@ $checkouts = $user->getCheckouts();
           <td><?= h($item->getConsole()); ?></td>
           <td><?= h($item->condition_inv); ?></td>
           <td><?= h($item->available_after_inv); ?></td>
+          <td>
+            <form method="POST" action="<?=url_for('catalog/return.php?id=' . h(u($item->id))) ?>">
+              <input type="submit" value="Return Game" class="return-game">
+            </form>
+          </td>
     	  </tr>
       <?php } ?>
   	</table>

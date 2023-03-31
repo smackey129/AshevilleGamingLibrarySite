@@ -80,13 +80,18 @@ class InventoryItem extends DatabaseObject {
     $return_date = $now->add(new DateInterval('P1W'))->format('Y-m-d');
     $this->available_after_inv = $return_date;
     $this->update();
+    return true;
   }
 
   public function return($user) {
+    if($user->id != $this->id_usr_inv) {
+      return false;
+    }
     $this->id_usr_inv = NULL;
     $this->available_inv = "1";
     $this->available_after_inv = date("Y-m-d");
     $this->update();
+    return true;
   }
 }
 ?>
