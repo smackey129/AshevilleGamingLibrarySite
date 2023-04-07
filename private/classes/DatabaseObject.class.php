@@ -81,7 +81,6 @@ class DatabaseObject {
     $result = self::$database->query($sql);
     if($result) {
       $this->id = self::$database->insert_id;
-      echo ($this->id);
 
     }
     return $result;

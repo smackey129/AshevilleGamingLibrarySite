@@ -3,31 +3,32 @@
 $page_title = $session->username . '\'s Wish List'; 
 include(SHARED_PATH . '/user_header.php'); 
 $user = User::find_by_username($session->username);
-$games = $user->getWishList();
+$wishlist = $user->getWishList();
 ?>
 
 <main>
-  <h1>My Wish List (Placeholder Content)</h1>
+  <h1>My Wish List</h1>
   <div class="table">
     <table>
       <tr>
-        <th>Name</th>
-        <th>ESRB Rating</th>
-        <th>Minimum Age</th>
-        <th>Genre</th>
-        <th>Publisher</th>
+        <th>Game</th>
+        <th>Console</th>
+        <th>Condition</th>
+        <th>Available?</th>
+        <th>Available After</th>
       </tr>
 
-      <?php foreach($games as $game) { ?>
+      <?php foreach($wishlist as $item) { ?>
         <tr>
-          <td><?= h($game->name_gme); ?></td>
-          <td><?= h($game->getRating()); ?></td>
-          <td><?= h($game->getMinAge()); ?></td>
-          <td><?= h($game->getGenre()); ?></td>
-          <td><?= h($game->getPublisher()); ?></td>
-    	  </tr>
+          <td><a href="<?= url_for('catalog/view.php?id=' . h(u($item->id)));?>"> <?= ($item->getGame()); ?></td>
+          <td><?= h($item->getConsole()); ?></td>
+          <td><?= h($item->condition_inv); ?></td>
+          <td><?= h($item->getAvailability()); ?></td>
+          <td><?= h($item->available_after_inv); ?></td>
+        </tr>
       <?php } ?>
-  	</table>
+    </table>
+  </div>
   </div>
 </main>
 <?php include(SHARED_PATH . '/user_footer.php');

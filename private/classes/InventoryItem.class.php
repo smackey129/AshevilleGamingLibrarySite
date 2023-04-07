@@ -73,7 +73,7 @@ class InventoryItem extends DatabaseObject {
   }
 
   public function checkout($user) {
-    echo "<p>The Item Has been Checked out for " . $user->username_usr ." (Or it will be when the feature is implemented) Come pick up the item at our location at *insert address here*</p>";
+    echo "<p>The Item Has been Checked out for " . $user->username_usr ." Come pick up the item at our location at *insert address here*</p>";
     $this->id_usr_inv = $user->id;
     $this->available_inv = "0";
     $now = new DateTime();
@@ -92,6 +92,18 @@ class InventoryItem extends DatabaseObject {
     $this->available_after_inv = date("Y-m-d");
     $this->update();
     return true;
+  }
+
+  public function isWishlisted($user) {
+    $sql = "SELECT * FROM wish_list_wsh WHERE id_usr_wsh ='" . $user->id . "' AND id_inv_wsh ='" . $this->id . "'";
+    $result = self::$database->query($sql);
+    $object_array = [];
+    $wishlisted = false;
+    while($record = $result->fetch_assoc()) {
+      $object_array[] = $record;
+      $wishlisted = true;
+    }
+    return $wishlisted;
   }
 }
 ?>

@@ -11,9 +11,12 @@ $item = InventoryItem::find_by_id($id);
 $game = Game::find_by_id($item->id_gme_inv);
 $user = User::find_by_username($session->username);
 
+
+
 if($game == false) {
   redirect_to('index.php');
 }
+
 ?>
 
 <?php $page_title = 'Game: ' . h($game->name_gme); ?>
@@ -67,6 +70,33 @@ else {
           <input type="submit" value="Return Game">
       </form>
       <?php } ?>
+
+      <?php 
+        if(is_post_request()){
+          if(isset($_POST['wishlist'])){
+            if($user->addToWishList($item)){
+              echo "<span>Added to your Wish List!</span><br>";
+            }
+          }
+          elseif(isset($_POST['remove'])) {
+            if($user->removeFromWishList($item)){
+              echo "<span>Removed From your Wish List!</span><br>";
+            }
+          }
+      }?>
+
+      <form action="view.php?id=<?= h(u($item->id));?>" method="POST">
+        <?php 
+          if(isset($session->user_level) && !$item->isWishlisted($user)){ ?>
+          <input type="submit" name="wishlist" value="Add to Wish List">
+        <?php }
+          elseif($item->isWishlisted($user)){ ?>
+          <input type="submit" name="remove" value="Remove from Wish List">
+        <?php }
+        else{ ?>
+          <a class='button' href='<?= url_for('login.php')?>'>Sign in to add this game to your Wish List</a>
+        <?php }?>
+      </form>
       
 </main>
 <?php include(SHARED_PATH . '/user_footer.php'); ?>

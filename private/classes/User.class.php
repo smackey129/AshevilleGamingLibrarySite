@@ -166,13 +166,25 @@ class User extends DatabaseObject {
   }
 
   public function getWishList() {
-    $sql = "SELECT id_gme_wsh FROM wish_list_wsh WHERE id_usr_wsh ='" . $this->id . "'";
+    $sql = "SELECT id_inv_wsh FROM wish_list_wsh WHERE id_usr_wsh ='" . $this->id . "'";
     $result = self::$database->query($sql);
     $object_array = [];
     while($record = $result->fetch_assoc()) {
-      $object_array[] = Game::find_by_id($record['id_gme_wsh']);
+      $object_array[] = InventoryItem::find_by_id($record['id_inv_wsh']);
     }
     return $object_array;
+  }
+
+  public function addToWishList($item) {
+    $sql = "INSERT INTO wish_list_wsh (id_usr_wsh, id_inv_wsh) VALUES ('" . $this->id . "', '" . $item->id . "')";
+    $result = self::$database->query($sql);
+    return $result;
+  }
+
+  public function removeFromWishList($item) {
+    $sql = "DELETE FROM wish_list_wsh WHERE id_usr_wsh ='" . $this->id . "' AND id_inv_wsh ='" . $item->id . "'";
+    $result = self::$database->query($sql);
+    return $result;
   }
 
   public static function getStateNameById($id) {
