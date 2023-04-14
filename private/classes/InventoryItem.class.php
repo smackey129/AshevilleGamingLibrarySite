@@ -72,6 +72,68 @@ class InventoryItem extends DatabaseObject {
     return(static::find_by_sql($sql));
   }
 
+  public static function search($terms){
+    $sql = "SELECT inventory_inv.* FROM inventory_inv INNER JOIN games_gme ON games_gme.id = inventory_inv.id_gme_inv INNER JOIN companies_cmp ON games_gme.id_cmppub_gme = companies_cmp.id INNER JOIN consoles_con ON inventory_inv.id_con_inv = consoles_con.id WHERE ";
+
+    //Check the name field
+    $namestring = "name_gme LIKE '%" . self::$database->escape_string($terms["name"]). "%'";
+    $sql = $sql . $namestring;
+
+    //Check the genre field
+    if(isset($terms["genre"])){
+      $sql = $sql . createSearchTerm($terms["genre"], "id_gnr_gme", self::$database);
+    }
+    
+    //Check the console field
+    if(isset($terms["console"])){
+      $sql = $sql . createSearchTerm($terms["console"], "id_con_inv", self::$database);
+    }
+
+    //Check the publisher field
+    $pubString = " AND name_cmp LIKE '%" . self::$database->escape_string($terms["company"]). "%'";
+    $sql = $sql . $pubString;
+
+    //Check rating field
+    if(isset($terms["rating"])) {
+      $sql = $sql . createSearchTerm($terms["rating"], "id_age_gme", self::$database);
+    }
+
+    //Check condition field
+    if($terms["condition"] != ""){
+      $condString = " AND (";
+
+      switch($terms["condition"]) {
+        case "Poor":
+          $condString = $condString . " condition_inv = 'Poor' OR";
+        case "Acceptable":
+          $condString = $condString . " condition_inv = 'Acceptable' OR";
+        case "Good":
+          $condString = $condString . " condition_inv = 'Good' OR";
+        case "Great":
+          $condString = $condString . " condition_inv = 'Great' OR";
+        case "Like New":
+          $condString = $condString . " condition_inv = 'Like New')";
+      }
+      $sql = $sql . $condString;
+    }
+
+    //Check Availability
+    if($terms["availability"] != ""){
+      $availabilityString = " AND available_inv = ";
+      if($terms["availability"] == 'available') {
+        $availabilityString = $availabilityString . "1";
+      }
+      else{
+        $availabilityString = $availabilityString . "0";
+      }
+      $sql = $sql . $availabilityString;
+    }
+
+    //Sort By
+    $sql = $sql . " ORDER BY " . $terms["sort"] . " " . $terms["order"];
+    return static::find_by_sql($sql);
+  }
+
   public function checkout($user) {
     echo "<p>The Item Has been Checked out for " . $user->username_usr ." Come pick up the item at our location at *insert address here*</p>";
     $this->id_usr_inv = $user->id;

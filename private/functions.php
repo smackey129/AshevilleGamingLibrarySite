@@ -51,4 +51,14 @@ if(!function_exists('money_format')) {
   }
 }
 
+function createSearchTerm($term, $fieldname, $database){
+  if(isset($term)){
+    $searchString = " AND ($fieldname ='" . $database->escape_string($term[0]) . "'";
+    for($i = 1; sizeof($term) > $i; $i++) {
+      $searchString = $searchString . " OR $fieldname ='" . $database->escape_string($term[$i]) . "'";
+    }
+    $searchString = $searchString . ")";
+    return $searchString;
+  }
+}
 ?>

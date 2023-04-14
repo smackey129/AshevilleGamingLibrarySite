@@ -10,6 +10,11 @@ else {
   include(SHARED_PATH . '/public_header.php'); 
 }
 
+if(is_post_request()){
+  $terms = $_POST["search"];
+  $inventory = InventoryItem::search($terms);
+}
+
 ?>
 <main role="main" id="main-content" tabindex="-1">
   <h1>Game Catalog</h1>
