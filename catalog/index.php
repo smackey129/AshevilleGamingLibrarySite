@@ -18,6 +18,7 @@ if(is_post_request()){
 ?>
 <main role="main" id="main-content" tabindex="-1">
   <h1>Game Catalog</h1>
+  <a href="search.php" class="button">Search the Catalog</a>
   <div class="table">
     <table>
       <tr>
