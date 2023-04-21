@@ -2,10 +2,7 @@
 
 <?php 
 $current_page = 1;
-$users = User::find_all(); 
-$inventory = InventoryItem::find_all();
-$games = Game::find_all();
-$page_title = 'Database Contents'; 
+$page_title = 'Home'; 
 if(isset($session->user_level)){
   include(SHARED_PATH . '/user_header.php'); 
 }
