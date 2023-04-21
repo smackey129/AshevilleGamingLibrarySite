@@ -34,6 +34,7 @@ if(is_post_request()) {
       // username not found or password does not match
         if($user == false) {
           $errors[] = "Username not found";
+          $errors["test"][] = "Test Error";
         }
         else {
           $errors[] = "Username and password do not match.";
@@ -45,7 +46,6 @@ if(is_post_request()) {
 ?>
 
 <?php $page_title = 'Log in'; ?>
-<?php //include(SHARED_PATH . '/staff_header.php'); ?>
 <main role="main" id="main-content" tabindex="-1">
   <h1>Log in</h1>
 
@@ -56,7 +56,17 @@ if(is_post_request()) {
     <input type="text" name="username" value="<?php echo h($username); ?>"  id="username" required><br>
     <label for="password">Password:</label><br>
     <input type="password" name="password" value="" id="password" required><br>
-    <input type="submit" name="submit" value="Log In">
+    <br>
+    <a href="<?= url_for('forgotpassword.php')?>" class="button">Forgot Password?</a>
+    <script src="<?= url_for('js/captchaSetup.js')?>" async defer></script>
+    <div
+        class="g-recaptcha"
+        data-sitekey="6Lef7polAAAAALA3a2Q57-04Q0dGvvOsmu-5_mC-"
+        data-callback="callback"
+      >
+    </div>
+    <br>
+    <input type="submit" name="submit" id="submit-button" value="Log In">
   </form>
 
 </main>

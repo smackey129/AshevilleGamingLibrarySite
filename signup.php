@@ -34,8 +34,16 @@ if(is_post_request()) {
     <form action="<?php echo url_for('signup.php'); ?>" method="post">
 
       <?php include('users/form_fields.php'); ?>
-
-        <input type="submit" value="Create Member">
+      <br>
+      <script src="<?= url_for('js/captchaSetup.js')?>" async defer></script>
+      <div
+          class="g-recaptcha"
+          data-sitekey="6Lef7polAAAAALA3a2Q57-04Q0dGvvOsmu-5_mC-"
+          data-callback="callback"
+        >
+      </div>
+      <br>
+        <input type="submit" id="submit-button" value="Create Member">
     </form>
 </main>
 <?php include(SHARED_PATH . '/user_footer.php'); ?>

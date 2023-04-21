@@ -5,6 +5,7 @@
     <title>Asheville Gaming Library <?php if(isset($page_title)) { echo '- ' . h($page_title); } ?></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <link rel="stylesheet" media="all" href="<?php echo url_for('/stylesheets/css.css'); ?>">
   </head>
 
