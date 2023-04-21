@@ -82,7 +82,7 @@ class User extends DatabaseObject {
     if(is_blank($this->email_usr)) {
       $this->errors[] = "Email cannot be blank.";
     } elseif (!has_length($this->email_usr, array('max' => 255))) {
-      $this->errors[] = "Last name must be less than 255 characters.";
+      $this->errors[] = "Email must be less than 255 characters.";
     } elseif (!has_valid_email_format($this->email_usr)) {
       $this->errors[] = "Email must be a valid format.";
     }
@@ -114,15 +114,15 @@ class User extends DatabaseObject {
     if($this->password_required) {
       if(is_blank($this->password)) {
         $this->errors[] = "Password cannot be blank.";
-      } elseif (!has_length($this->password, array('min' => 12))) {
+      } if (!has_length($this->password, array('min' => 12))) {
         $this->errors[] = "Password must contain 12 or more characters";
-      } elseif (!preg_match('/[A-Z]/', $this->password)) {
+      } if (!preg_match('/[A-Z]/', $this->password)) {
         $this->errors[] = "Password must contain at least 1 uppercase letter";
-      } elseif (!preg_match('/[a-z]/', $this->password)) {
+      } if (!preg_match('/[a-z]/', $this->password)) {
         $this->errors[] = "Password must contain at least 1 lowercase letter";
-      } elseif (!preg_match('/[0-9]/', $this->password)) {
+      } if (!preg_match('/[0-9]/', $this->password)) {
         $this->errors[] = "Password must contain at least 1 number";
-      } elseif (!preg_match('/[^A-Za-z0-9\s]/', $this->password)) {
+      } if (!preg_match('/[^A-Za-z0-9\s]/', $this->password)) {
         $this->errors[] = "Password must contain at least 1 symbol";
       }
     
@@ -194,6 +194,51 @@ class User extends DatabaseObject {
     return $result['state_name_sta'];
   }
 
+  public function generatePasswordToken() {
+    if($this->hasToken()){
+      $this->clearToken();
+    }
+    
+    $token = random_str(64);
+    $hashed_token = password_hash($token, PASSWORD_BCRYPT);
+    $now = new DateTime();
+    $expiry_date = $now->add(new DateInterval('PT3H'))->format('Y-m-d H:i:s');
+    $sql = "INSERT INTO password_reset_tokens_prt (id_usr_prt, hashed_token_prt, expiration_prt) VALUES ('". $this->id . "', '". $hashed_token . "', '".$expiry_date ."')";
+    $result = self::$database->query($sql);
+    if($result){
+      return $token;
+    }
+    else {
+      return false;
+    }
+  }
+
+  public function hasToken(){
+    $sql = "SELECT * FROM password_reset_tokens_prt WHERE id_usr_prt = ". $this->id . "";
+    $result = self::$database->query($sql);
+    if($record = $result->fetch_assoc()) {
+      return true;
+    }
+    return false;
+  }
+
+  public static function getUserFromToken($token) {
+    $now = new DateTime();
+    $now = $now->format('Y-m-d H:i:s');
+    $sql = "SELECT id_usr_prt, hashed_token_prt FROM password_reset_tokens_prt WHERE expiration_prt > '" . $now . "'";
+    $result = self::$database->query($sql);
+    while($record = $result->fetch_assoc()){
+      if(password_verify($token, $record['hashed_token_prt'])){
+        return self::find_by_id($record['id_usr_prt']);
+      }
+    }
+    return false;
+  }
+
+  public function clearToken(){
+    $sql = "DELETE FROM password_reset_tokens_prt WHERE id_usr_prt = ". $this->id . "";
+    $result = self::$database->query($sql);
+  }
 }
 
 ?>
