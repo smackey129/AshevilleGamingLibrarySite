@@ -2,6 +2,11 @@
 
 <?php
 $current_page = 3;
+
+if(isset($_POST['login'])) {
+  redirect_to(url_for('login.php'));
+}
+
 if(!isset($_GET['id']) || !is_post_request() || !($session->is_logged_in())) {
   redirect_to('index.php');
 }

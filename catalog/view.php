@@ -2,6 +2,11 @@
 
 <?php
 $current_page = 3;
+
+if(isset($_POST['login'])) {
+  redirect_to(url_for('login.php'));
+}
+
 if(!isset($_GET['id'])) {
   redirect_to('index.php');
 }
@@ -62,10 +67,10 @@ else {
           <input type="submit" name="checkout" value="This game is currently unavailable" disabled>
         <?php }
         else{ ?>
-          <a class='button' href='<?= url_for('login.php')?>'>Sign in to check out a game</a>
+          <input type="submit" name="login" value="Sign in to check out a game">
         <?php }?>
       </form>
-      <?php if($item->id_usr_inv == $user->id) { ?>
+      <?php if(isset($session->user_level) && $item->id_usr_inv == $user->id) { ?>
         <form action="return.php?id=<?= h(u($item->id));?>" method="POST">
           <input type="submit" value="Return Game">
       </form>
@@ -87,14 +92,15 @@ else {
 
       <form action="view.php?id=<?= h(u($item->id));?>" method="POST">
         <?php 
-          if(isset($session->user_level) && !$item->isWishlisted($user)){ ?>
+          if(isset($session->user_level)){ 
+            if(!$item->isWishlisted($user)) {?>
           <input type="submit" name="wishlist" value="Add to Wish List">
         <?php }
           elseif($item->isWishlisted($user)){ ?>
           <input type="submit" name="remove" value="Remove from Wish List">
-        <?php }
+        <?php }}
         else{ ?>
-          <a class='button' href='<?= url_for('login.php')?>'>Sign in to add this game to your Wish List</a>
+          <input type="submit" name="login" value="Sign in to add to your wish list">
         <?php }?>
       </form>
       
