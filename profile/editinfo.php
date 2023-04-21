@@ -14,8 +14,8 @@ if(is_post_request()) {
   $user->merge_attributes($args);
   $result = $user->save();
   if($result === true) {
-    $session->message('Information Updated');
     $session->login($user);
+    redirect_to("confirmedit.php");
   } else {
     // show errors
   }
@@ -31,23 +31,19 @@ if(is_post_request()) {
 <?php $page_title = 'Edit My Information'; ?>
 <?php include(SHARED_PATH . '/user_header.php'); ?>
 
-<main>
+<main role="main" id="main-content" tabindex="-1">
 
-  <div class="bicycle edit">
-    <h1>Edit My Information</h1>
-    <p>All fields marked with "*" must not be blank</p>
-    <?php echo display_errors($user->errors); ?>
+  <h1>Edit My Information</h1>
+  <p>All fields marked with "*" must not be blank</p>
+  <?php echo display_errors($user->errors); ?>
 
-    <form action="editinfo.php" method="post">
+  <form action="editinfo.php" method="post">
 
-      <?php include('profile_form_fields.php'); ?>
+    <?php include('profile_form_fields.php'); ?>
 
-      <div id="operations">
-        <input type="submit" value="Save Changes">
-      </div>
-    </form>
+    <input type="submit" value="Save Changes">
+  </form>
 
-  </div>
 
 </main>
 
