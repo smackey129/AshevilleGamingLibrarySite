@@ -43,7 +43,7 @@ if(is_post_request()) {
         >
       </div>
       <br>
-        <input type="submit" id="submit-button" value="Create Member">
+        <input type="submit" id="submit-button" value="Sign Up">
     </form>
 </main>
 <?php include(SHARED_PATH . '/user_footer.php'); ?>

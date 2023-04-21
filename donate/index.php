@@ -18,7 +18,7 @@ else {
   <h1>Donate A Game</h1>
   <?php
     if($session->is_logged_in()) { ?>
-      <a class='button' href='donate.php'>Click Here to Donate a Game</a>
+      <a class='button' href='donate.php'>Donate a Game</a>
     <?php }
     else { ?>
       <a class='button' href='<?= url_for("signup.php")?>'>Sign Up to Donate a Game</a>
