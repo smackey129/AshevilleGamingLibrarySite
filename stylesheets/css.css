@@ -3,6 +3,7 @@
   --main-bg-color-hover: #9f7a6d;
   --main-text-color: #fff;
   --main-link-color: #fff;
+  --alternate-bg-color: #8c6b5f;
 }
 
 * {
@@ -142,7 +143,7 @@ nav {
 }
 
 #link_options li:nth-child(odd) {
-  background-color: var(--main-bg-color-hover);
+  background-color: var(--alternate-bg-color);
 }
 
 #link_options a {
@@ -175,7 +176,7 @@ table {
 }
 
 tr:nth-child(even){
-  background-color: var(--main-bg-color-hover);
+  background-color: var(--alternate-bg-color);
 }
 
 th {
@@ -189,6 +190,7 @@ td {
 
 .button {
   background-color: #ece8e8;
+  border: 2px solid #000;
   border-radius: 15px;
   color: #000;
   display: inline-block;
