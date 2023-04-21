@@ -18,7 +18,7 @@ if(!isset($user)) {
 
 <dl>
   <dt><label for="user[email_usr]">* Email</label></dt>
-  <dd><input type="text" name="user[email_usr]" value="<?php echo h($user->email_usr); ?>" required id="user[email_usr]"></dd>
+  <dd><input type="email" name="user[email_usr]" value="<?php echo h($user->email_usr); ?>" required id="user[email_usr]"></dd>
 </dl>
 
 <dl>
@@ -50,8 +50,19 @@ if(!isset($user)) {
 
 <dl>
   <dt><label for="user[zip_usr]">* Zip Code</label></dt>
-  <dd><input type="text" name="user[zip_usr]" value="<?php echo h($user->zip_usr); ?>" required id="user[zip_usr]"></dd>
+  <dd><input type="number" name="user[zip_usr]" value="<?php echo h($user->zip_usr); ?>" required id="user[zip_usr]"></dd>
 </dl>
+
+<div>
+  <p>Passwords Must:</p>
+  <ul>
+    <li>Contain 12 or more characters</li>
+    <li>Contain at least 1 uppercase letter</li>
+    <li>Contain at least 1 lowercase letter</li>
+    <li>Contain at least 1 number</li>
+    <li>Contain at least 1 symbol</li>
+  </ul>
+</div>
 
 <dl>
   <dt><label for="user[password]">* Password</label></dt>
