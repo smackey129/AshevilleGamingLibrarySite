@@ -17,7 +17,7 @@
     <div id="content-wrapper">
     <a href="#main-content" id="skip-link">Skip to main content</a>
     <header role="banner">
-      <a href="<?php echo url_for('index.php'); ?>"><img src="<?= url_for('images/logo crop 2 white.png')?>" alt="AshevilleGame Library Logo" width="249" height="96"></a>
+      <a href="<?php echo url_for('index.php'); ?>"><img src="<?= url_for('images/logo crop 2.png')?>" alt="AshevilleGame Library Logo" width="249" height="96"></a>
       <?php 
         require_admin();
         echo "<div id='user_links'>";
