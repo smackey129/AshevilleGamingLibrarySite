@@ -30,8 +30,6 @@ $wishlist = $user->getWishList();
     <table>
       <tr>
         <th>Game</th>
-        <th>Console</th>
-        <th>Condition</th>
         <th>Available?</th>
         <th>Available After</th>
       </tr>
@@ -39,8 +37,6 @@ $wishlist = $user->getWishList();
       <?php foreach($wishlist as $item) { ?>
         <tr>
           <td><a href="<?= url_for('catalog/view.php?id=' . h(u($item->id)));?>"> <?= ($item->getGame()); ?></td>
-          <td><?= h($item->getConsole()); ?></td>
-          <td><?= h($item->condition_inv); ?></td>
           <td><?= h($item->getAvailability()); ?></td>
           <td><?= h($item->available_after_inv); ?></td>
           <td>

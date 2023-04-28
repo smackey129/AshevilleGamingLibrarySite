@@ -14,7 +14,6 @@ $checkouts = $user->getCheckouts();
       <tr>
         <th>Game</th>
         <th>Console</th>
-        <th>Condition</th>
         <th>Due By</th>
       </tr>
 
@@ -22,7 +21,6 @@ $checkouts = $user->getCheckouts();
         <tr>
           <td><?= h($item->getGame()); ?></td>
           <td><?= h($item->getConsole()); ?></td>
-          <td><?= h($item->condition_inv); ?></td>
           <td><?= h($item->available_after_inv); ?></td>
           <td>
             <form method="POST" action="<?=url_for('catalog/return.php?id=' . h(u($item->id))) ?>">
