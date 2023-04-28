@@ -18,12 +18,20 @@ function require_admin() {
 
 function display_errors($errors=array()) {
   $output = '';
-  if(!empty($errors)) {
+  $nonArray = false;
+  foreach($errors as $error) {
+    if(!is_array($error)){
+      $nonArray = true;
+    }
+  }
+  if(!empty($errors) && $nonArray) {
     $output .= "<div class=\"errors\">";
     $output .= "Please fix the following errors:";
     $output .= "<ul>";
     foreach($errors as $error) {
-      $output .= "<li>" . h($error) . "</li>";
+      if(!is_array($error)){
+        $output .= "<li>" . h($error) . "</li>";
+      }
     }
     $output .= "</ul>";
     $output .= "</div>";

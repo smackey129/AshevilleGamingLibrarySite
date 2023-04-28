@@ -68,31 +68,31 @@ class User extends DatabaseObject {
     $this->errors = [];
   
     if(is_blank($this->fname_usr)) {
-      $this->errors[] = "First name cannot be blank.";
+      $this->errors["firstname"][] = "First name cannot be blank.";
     } elseif (!has_length($this->fname_usr, array('min' => 2, 'max' => 255))) {
-      $this->errors[] = "First name must be between 2 and 255 characters.";
+      $this->errors["firstname"][] = "First name must be between 2 and 255 characters.";
     }
   
     if(is_blank($this->lname_usr)) {
-      $this->errors[] = "Last name cannot be blank.";
+      $this->errors["lastname"][] = "Last name cannot be blank.";
     } elseif (!has_length($this->lname_usr, array('min' => 2, 'max' => 255))) {
-      $this->errors[] = "Last name must be between 2 and 255 characters.";
+      $this->errors["lastname"][] = "Last name must be between 2 and 255 characters.";
     }
   
     if(is_blank($this->email_usr)) {
-      $this->errors[] = "Email cannot be blank.";
+      $this->errors["email"][] = "Email cannot be blank.";
     } elseif (!has_length($this->email_usr, array('max' => 255))) {
-      $this->errors[] = "Email must be less than 255 characters.";
+      $this->errors["email"][] = "Email must be less than 255 characters.";
     } elseif (!has_valid_email_format($this->email_usr)) {
-      $this->errors[] = "Email must be a valid format.";
+      $this->errors["email"][] = "Email must be a valid format.";
     }
   
     if(is_blank($this->username_usr)) {
-      $this->errors[] = "Username cannot be blank.";
+      $this->errors["username"][] = "Username cannot be blank.";
     } elseif (!has_length($this->username_usr, array('min' => 8, 'max' => 255))) {
-      $this->errors[] = "Username must be between 8 and 255 characters.";
+      $this->errors["username"][] = "Username must be between 8 and 255 characters.";
     } elseif (!has_unique_username($this->username_usr, $this->id ?? 0)) {
-      $this->errors[] = "Username not allowed, try another.";
+      $this->errors["username"][] = "Username not allowed, try another.";
     }
 
     if(is_blank($this->street_address_usr)) {
@@ -113,23 +113,23 @@ class User extends DatabaseObject {
   
     if($this->password_required) {
       if(is_blank($this->password)) {
-        $this->errors[] = "Password cannot be blank.";
+        $this->errors["password"][] = "Password cannot be blank.";
       } if (!has_length($this->password, array('min' => 12))) {
-        $this->errors[] = "Password must contain 12 or more characters";
+        $this->errors["password"][] = "Password must contain 12 or more characters";
       } if (!preg_match('/[A-Z]/', $this->password)) {
-        $this->errors[] = "Password must contain at least 1 uppercase letter";
+        $this->errors["password"][] = "Password must contain at least 1 uppercase letter";
       } if (!preg_match('/[a-z]/', $this->password)) {
-        $this->errors[] = "Password must contain at least 1 lowercase letter";
+        $this->errors["password"][] = "Password must contain at least 1 lowercase letter";
       } if (!preg_match('/[0-9]/', $this->password)) {
-        $this->errors[] = "Password must contain at least 1 number";
+        $this->errors["password"][] = "Password must contain at least 1 number";
       } if (!preg_match('/[^A-Za-z0-9\s]/', $this->password)) {
-        $this->errors[] = "Password must contain at least 1 symbol";
+        $this->errors["password"][] = "Password must contain at least 1 symbol";
       }
     
       if(is_blank($this->confirm_password)) {
-        $this->errors[] = "Confirm password cannot be blank.";
+        $this->errors["confirm_password"][] = "Confirm password cannot be blank.";
       } elseif ($this->password !== $this->confirm_password) {
-        $this->errors[] = "Password and confirm password must match.";
+        $this->errors["confirm_password"][] = "Password and confirm password must match.";
       }
     }
     return $this->errors;

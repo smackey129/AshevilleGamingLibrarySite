@@ -15,6 +15,7 @@ if(!isset($item)) {
   $companies = Company::find_all();
 ?>
 
+<?php if(array_key_exists("game", $item->errors)) {echo display_errors($item->errors["game"]);} ?>
 <dl>
   <dt><label for="item[id_gme_inv]">* Game (If it isn't listed, select the "Not Listed" option)</label></dt>
   <dd>
@@ -30,11 +31,13 @@ if(!isset($item)) {
 
 <fieldset id="new_game_form">
   <legend>Can't find a game? Enter the details here.</legend>
+  <?php if(array_key_exists("name", $new_game->errors)) {echo display_errors($new_game->errors["name"]);} ?>
   <dl>
     <dt><label for="game[name_gme]">* Game Name</label></dt>
     <dd><input type="text" name="game[name_gme]" id="game[name_gme]"></dd>
   </dl>
 
+  <?php if(array_key_exists("age", $new_game->errors)) {echo display_errors($new_game->errors["age"]);} ?>
   <dl>
     <dt><label for="game[id_age_gme]">* ESRB Rating</label></dt>
     <dd>
@@ -47,6 +50,7 @@ if(!isset($item)) {
     </dd>
   </dl>
 
+  <?php if(array_key_exists("genre", $new_game->errors)) {echo display_errors($new_game->errors["genre"]);} ?>
   <dl>
     <dt><label for="game[id_gnr_gme]">* Genre</label></dt>
     <dd>
@@ -59,6 +63,7 @@ if(!isset($item)) {
     </dd>
   </dl>
 
+  <?php if(array_key_exists("publisher", $new_game->errors)) {echo display_errors($new_game->errors["publisher"]);} ?>
   <dl>
     <dt><label for="game[id_cmppub_gme]">* Publisher</label></dt>
     <dd>
@@ -74,6 +79,7 @@ if(!isset($item)) {
 
 <script src="<?= url_for('js/newGame.js')?>" defer></script>
 
+<?php if(array_key_exists("console", $item->errors)) {echo display_errors($item->errors["console"]);} ?>
 <dl>
   <dt><label for="item[id_con_inv]">* Console</label></dt>
   <dd>
@@ -86,6 +92,7 @@ if(!isset($item)) {
   </dd>
 </dl>
 
+<?php if(array_key_exists("condition", $item->errors)) {echo display_errors($item->errors["condition"]);} ?>
 <dl>
   <dt><label for="item[condition_inv]">* Condition</label></dt>
   <dd>

@@ -22,19 +22,19 @@ class Game extends DatabaseObject {
     $this->errors = [];
   
     if(is_blank($this->name_gme)) {
-      $this->errors[] = "Game Name cannot be blank";
+      $this->errors["name"][] = "Game Name cannot be blank";
     }
 
     if(is_blank($this->id_age_gme)) {
-      $this->errors[] = "Please select an age rating";
+      $this->errors["age"][] = "Please select an age rating";
     }
 
     if(is_blank($this->id_gnr_gme)) {
-      $this->errors[] = "Please select a genre";
+      $this->errors["genre"][] = "Please select a genre";
     }
 
     if(is_blank($this->id_cmppub_gme)) {
-      $this->errors[] = "Please select a publisher";
+      $this->errors["publisher"][] = "Please select a publisher";
     }
 
     return $this->errors;

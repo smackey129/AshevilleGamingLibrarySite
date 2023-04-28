@@ -11,9 +11,9 @@ if(!isset($item)) {
   $consoles = Console::find_all();
   $users = User::find_all();
 ?>
-
+<?php if(array_key_exists("game", $item->errors)) {echo display_errors($item->errors["game"]);} ?>
 <dl>
-  <dt><label for="item[id_gme_inv]">Game</label></dt>
+  <dt><label for="item[id_gme_inv]">* Game</label></dt>
   <dd>
     <select name="item[id_gme_inv]" id="item[id_gme_inv]" required>
       <option value="">Select Game</option>
@@ -24,8 +24,9 @@ if(!isset($item)) {
   </dd>
 </dl>
 
+<?php if(array_key_exists("console", $item->errors)) {echo display_errors($item->errors["console"]);} ?>
 <dl>
-  <dt><label for="item[id_con_inv]">Console</label></dt>
+  <dt><label for="item[id_con_inv]">* Console</label></dt>
   <dd>
     <select name="item[id_con_inv]" id="item[id_con_inv]" required>
       <option value="">Select Console</option>
@@ -36,8 +37,9 @@ if(!isset($item)) {
   </dd>
 </dl>
 
+<?php if(array_key_exists("condition", $item->errors)) {echo display_errors($item->errors["condition"]);} ?>
 <dl>
-  <dt><label for="item[condition_inv]">Condition</label></dt>
+  <dt><label for="item[condition_inv]">* Condition</label></dt>
   <dd>
     <select name="item[condition_inv]" id="item[condition_inv]" required>
       <option value="">Select Condition</option>
@@ -62,7 +64,7 @@ if(!isset($item)) {
 </dl>
 
 <dl>
-  <dt><label for="item[id_usrdonator_inv]">Donator</label></dt>
+  <dt><label for="item[id_usrdonator_inv]">* Donator</label></dt>
   <dd>
     <select name="item[id_usrdonator_inv]" id="item[id_usrdonator_inv]" required>
       <option value="">Select Donator</option>
@@ -74,7 +76,7 @@ if(!isset($item)) {
 </dl>
 
 <dl>
-  <dt>Available?</dt>
+  <dt>* Available?</dt>
   <dd><input type="radio" name="item[available_inv]" id="availableYes" value="1" required <?php if($item->getAvailability() == 'Yes') {echo "checked='true'";}?>>
   <label for="availableYes">Yes</label><br>
   <input type="radio" name="item[available_inv]" id="availableNo" value="0" required <?php if($item->getAvailability() == 'No') {echo "checked='true'";}?> >
@@ -84,7 +86,7 @@ if(!isset($item)) {
 
 
 <dl>
-  <dt><label for="item[available_after_inv]">Available After/Due By:</label></dt>
+  <dt><label for="item[available_after_inv]">* Available After/Due By:</label></dt>
   <dd><input type="date" name="item[available_after_inv]" value="<?= $item->available_after_inv?>" id="item[available_after_inv]" required>
   </dd>
 </dl>

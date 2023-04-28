@@ -6,21 +6,25 @@ if(!isset($user)) {
 }
 ?>
 
+<?php if(array_key_exists("firstname", $user->errors)) {echo display_errors($user->errors["firstname"]);} ?>
 <dl>
   <dt><label for="user[fname_usr]">* First name</label></dt>
   <dd><input type="text" name="user[fname_usr]" value="<?php echo h($user->fname_usr); ?>" required id="user[fname_usr]"></dd>
 </dl>
 
+<?php if(array_key_exists("lastname", $user->errors)) {echo display_errors($user->errors["lastname"]);} ?>
 <dl>
   <dt><label for="user[lname_usr]">* Last name</label></dt>
   <dd><input type="text" name="user[lname_usr]" value="<?php echo h($user->lname_usr); ?>" required id="user[lname_usr]"></dd>
 </dl>
 
+<?php if(array_key_exists("email", $user->errors)) {echo display_errors($user->errors["email"]);} ?>
 <dl>
   <dt><label for="user[email_usr]">* Email</label></dt>
   <dd><input type="email" name="user[email_usr]" value="<?php echo h($user->email_usr); ?>" required id="user[email_usr]"></dd>
 </dl>
 
+<?php if(array_key_exists("username", $user->errors)) {echo display_errors($user->errors["username"]);} ?>
 <dl>
   <dt><label for="user[username_usr]">* Username</label></dt>
   <dd><input type="text" name="user[username_usr]" value="<?php echo h($user->username_usr); ?>" required id="user[username_usr]"></dd>
@@ -64,11 +68,13 @@ if(!isset($user)) {
   </ul>
 </div>
 
+<?php if(array_key_exists("password", $user->errors)) {echo display_errors($user->errors["password"]);} ?>
 <dl>
   <dt><label for="user[password]">* Password</label></dt>
   <dd><input type="password" name="user[password]" value="" id="user[password]" required></dd>
 </dl>
 
+<?php if(array_key_exists("confirm_password", $user->errors)) {echo display_errors($user->errors["confirm_password"]);} ?>
 <dl>
   <dt><label for="user[confirm_password]">* Confirm Password</label></dt>
   <dd><input type="password" name="user[confirm_password]" value="" id="user[confirm_password]" required></dd>

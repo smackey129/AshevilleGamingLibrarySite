@@ -25,6 +25,26 @@ class InventoryItem extends DatabaseObject {
     $this->available_after_inv = $args['available_after_inv'] ?? date("Y/m/d");
   }
 
+  protected function validate() {
+    $this->errors = [];
+
+    if(is_blank($this->id_gme_inv)) {
+      $this->errors["game"][] = "Game cannot be blank.";
+    } elseif(!(Game::find_by_id($this->id_gme_inv))) {
+      $this->errors["game"][] = "Game not found";
+    }
+
+    if(is_blank($this->id_con_inv)) {
+      $this->errors["console"][] = "Console cannot be blank.";
+    } elseif(!(Console::find_by_id($this->id_gme_inv))) {
+      $this->errors["console"][] = "Console not found";
+    }
+
+    if(is_blank($this->condition_inv)) {
+      $this->errors["condition"][] = "Condition cannot be blank.";
+    } 
+  }
+
   public function getGame() {
     $sql = "SELECT name_gme FROM games_gme WHERE id='" . $this->id_gme_inv . "'";
     $result = self::$database->query($sql);
