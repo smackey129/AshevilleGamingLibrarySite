@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&family=Source+Sans+Pro&family=Ysabeau&display=swap');
+
 :root {
   --main-bg-color: rgb(151, 106, 92);
-  --main-bg-color-hover: #9f7a6d;
-  --main-text-color: #fff;
-  --main-link-color: #fff;
-  --alternate-bg-color: #8c6b5f;
+  --main-bg-color-hover: #c8c8c8;
+  --main-text-color: #000;
+  --main-link-color: #000;
+  --alternate-bg-color: #d1d1d1;
 }
 
 * {
@@ -11,17 +13,22 @@
 }
 
 html {
-  font: 16px 'Times New Roman', serif;
+  font: 16px 'Poppins', sans-serif;
 }
 
 body {
   background-color: var(--main-bg-color);
-  color: var(--main-text-color);
   margin: 0;
 }
 
 #content-wrapper {
-  margin: 0 auto 2rem;
+  background-color: #fff;
+  border: 5px solid #000;
+  color: #000;
+  margin: 0 auto 0;
+  min-height: 100vh;
+  overflow: hidden;
+  padding: 0 .75rem 1rem;
   width: 80%;
 }
 
@@ -70,8 +77,8 @@ header {
 }
 
 #user_links a {
-  background-color: #ada189;
-  color: #000;
+  background-color: #000;
+  color: #fff;
   border-radius: 5px;
   display: inline-block;
   margin-bottom: .25rem;
@@ -81,8 +88,8 @@ header {
 }
 
 #user_links a:hover {
-  background-color: #000;
-  color: #fff;
+  background-color: var(--main-bg-color-hover);
+  color: #000;
 }
 
 nav {
@@ -95,28 +102,29 @@ nav {
 }
 
 #navbar li {
-  border-right: 1px solid #fff;
+  border: 1px solid #000;
+  border-right: none;
 }
 
 #navbar li:last-of-type {
-  border: none;
+  border-right: 1px solid #000;
 }
 
 #navbar a {
   display: block;
   padding: 1rem;
   text-decoration: none;
+  height: 100%;
 }
 
 #navbar a:hover {
   background-color: var(--main-bg-color-hover);
-  border-radius: 15px;
   box-shadow: 0px 0px 20px inset #000;
-  color: #fff;
+  color: #000;
 }
 
 .current-page {
-  border-bottom: 5px dashed #fff;
+  border-bottom: 5px solid #000;
 }
 
 #navbar {
@@ -136,6 +144,7 @@ nav {
 #link_options {
   border-radius: 15px;
   list-style: none;
+  padding: 0;
 }
 
 #link_options li {
@@ -147,14 +156,26 @@ nav {
 }
 
 #link_options a {
+  display: block;
   font-size: 21px;
   text-decoration: none;
+  height: 100%;
+  width: 100%;
 }
 
 input[type=submit] {
   border-radius: 15px;
   margin-top: .5rem;
   padding: .5rem;
+}
+
+input {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+input[type=radio] {
+  display: inline-block;
 }
 
 .return-game {
@@ -184,7 +205,7 @@ th {
 }
 
 td {
-  padding: 1rem;
+  padding: 1rem .5rem;
   width: auto;
 }
 
@@ -195,27 +216,25 @@ td {
   color: #000;
   display: inline-block;
   padding: .75rem;
+  margin-bottom: 1rem;
   text-decoration: none;
 }
 
 /* Media Queries */
-/* 700px */
-@media screen and (max-width: 700px) {
-  header {
-    display: block;
-    padding-top: 58px;
-    text-align: center;
-  }
 
-  #user_links {
-    text-align: center;
+/* Fluid Text */
+@media screen and (max-width: 1200px) {
+  #content-wrapper {
+    font-size: calc(10px + (16 - 10) * (100vw - 320px) / (1200 - 320));
   }
 }
 
-/* 420px */
-@media screen and (max-width: 420px) {
+/* 890px */
+@media screen and (max-width: 890px) {
   #nav-trigger {
-    border-bottom: #fff solid 2px;
+    background: var(--main-bg-color);
+    border-bottom: #000 solid 2px;
+    color: #fff;
     cursor: pointer;
     display: block;
     padding: 1rem;
@@ -236,7 +255,11 @@ td {
   }
 
   #navbar li {
-    border-bottom: #fff solid 2px;
+    border-bottom: #000 solid 2px;
+  }
+
+  #navbar a {
+    color: #fff;
   }
 
   #nav-box:checked + ul {
@@ -244,7 +267,38 @@ td {
     display: block;
   }
 
+  .current-page {
+    border-bottom: 5px dashed #fff;
+  }
+
   header {
     padding-top: 58px;
+  }
+}
+
+/* 750px */
+@media screen and (max-width: 750px) {
+  header {
+    display: block;
+    padding-top: 58px;
+    text-align: center;
+  }
+
+  #user_links {
+    text-align: center;
+  }
+}
+
+/* 600px */
+@media screen and (max-width: 600px) {
+  #content-wrapper {
+    width: 100%;
+  }
+}
+
+/* 320px */
+@media screen and (max-width: 320px) {
+  #content-wrapper {
+    font-size: 10px;
   }
 }
