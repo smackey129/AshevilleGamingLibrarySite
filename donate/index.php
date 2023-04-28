@@ -21,7 +21,7 @@ else {
       <a class='button' href='donate.php'>Donate a Game</a>
     <?php }
     else { ?>
-      <a class='button' href='<?= url_for("signup.php")?>'>Sign Up to Donate a Game</a>
+      <a class='button' href='<?= url_for("login.php")?>'>Sign In to Donate a Game</a>
     <?php }
   ?>
 </main>
