@@ -34,7 +34,7 @@ if(is_post_request()) {
 <main role="main" id="main-content" tabindex="-1">
 
   <h1>Edit My Information</h1>
-  <p>All fields marked with "*" must not be blank</p>
+  <p>All fields marked with "*" must not be blank. If you do not wish to change your password, leave the "Password" and "Confirm Password" fields blank</p>
   <?php echo display_errors($user->errors); ?>
 
   <form action="editinfo.php" method="post">
