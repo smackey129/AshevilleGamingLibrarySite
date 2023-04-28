@@ -20,6 +20,7 @@ $companies = Company::find_all();
 ?>
 <main role="main" id="main-content" tabindex="-1">
   <h1>Search The Catalog</h1>
+  <p>Enter in your search criteria below. If you don't care about a particular field, either ignore it, leave it blank, or select "Don't Care".</p>
   <form action="index.php" method="POST">
     <dl>
       <dt><label for="game_name">Game Name</label></dt>

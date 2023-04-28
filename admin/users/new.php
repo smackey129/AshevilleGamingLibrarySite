@@ -28,7 +28,7 @@ if(is_post_request()) {
 <main role="main" id="main-content" tabindex="-1">
   <a class="back-link" href="<?php echo 'index.php'; ?>">&laquo; Back to List</a>
     <h1>Create User</h1>
-
+    <p>All fields with * are required</p>
     <?php echo display_errors($user->errors); ?>
 
     <form action="<?php echo 'new.php'; ?>" method="post">

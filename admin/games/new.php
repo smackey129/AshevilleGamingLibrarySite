@@ -29,7 +29,7 @@ if(is_post_request()) {
   <a class="back-link" href="<?php echo 'index.php'; ?>">&laquo; Back to List</a>
 
     <h1>Create New Game</h1>
-
+    <p>Fields marked with * are required</p>
     <?php echo display_errors($game->errors); ?>
 
     <form action="<?php echo 'new.php'; ?>" method="post">

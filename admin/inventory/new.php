@@ -31,6 +31,7 @@ if(is_post_request()) {
     <h1>Create Inventory Item</h1>
 
     <?php echo display_errors($item->errors); ?>
+    <p>All fields marked with "*" are required.</p>
 
     <form action="<?php echo 'new.php'; ?>" method="post">
 
