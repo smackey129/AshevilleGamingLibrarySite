@@ -39,9 +39,9 @@ if(is_post_request()) {
 
   <a class="back-link" href="<?php echo 'index.php'; ?>">&laquo; Back to List</a>
 
-  <div class="bicycle edit">
+  <div>
     <h1>Edit User</h1>
-
+    <p>All fields marked with "*" must not be blank. If you do not wish to change the password, leave the "Password" and "Confirm Password" fields blank</p>
     <?php echo display_errors($user->errors); ?>
 
     <form action="<?php echo 'edit.php?id=' . h(u($id)); ?>" method="post">
