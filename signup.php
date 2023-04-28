@@ -10,9 +10,8 @@ if(is_post_request()) {
 
   if($result === true) {
     $new_id = $user->id;
-    $session->message('Thank you for signing up!.');
     $session->login($user); 
-    redirect_to(url_for('index.php'));
+    redirect_to(url_for('profile/confirmedit.php'));
   } else {
     // show errors
   }
