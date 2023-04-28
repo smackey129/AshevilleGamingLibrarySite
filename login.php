@@ -32,13 +32,7 @@ if(is_post_request()) {
       redirect_to(url_for('index.php'));
     } else {
       // username not found or password does not match
-        if($user == false) {
-          $errors[] = "Username not found";
-          $errors["test"][] = "Test Error";
-        }
-        else {
-          $errors[] = "Username and password do not match.";
-        }
+        $errors[] = "Username and password do not match.";
     }
   }
 }
@@ -48,16 +42,14 @@ if(is_post_request()) {
 <?php $page_title = 'Log in'; ?>
 <main role="main" id="main-content" tabindex="-1">
   <h1>Log in</h1>
-
+  <a href="login.php">Not already a member? Sign up here!</a>
   <?php echo display_errors($errors); ?>
 
   <form action="login.php" method="post">
     <label for="username">Username:</label><br>
-    <input type="text" name="username" value="<?php echo h($username); ?>"  id="username" required><br>
-    <label for="password">Password:</label><br>
-    <input type="password" name="password" value="" id="password" required><br>
-    <br>
-    <a href="<?= url_for('forgotpassword.php')?>" class="button">Forgot Password?</a>
+    <input type="text" name="username" value="<?php echo h($username); ?>"  id="username" required>
+    <label for="password">Password:</label>
+    <input type="password" name="password" value="" id="password" required>
     <script src="<?= url_for('js/captchaSetup.js')?>" async defer></script>
     <div
         class="g-recaptcha"
@@ -67,7 +59,9 @@ if(is_post_request()) {
     </div>
     <br>
     <input type="submit" name="submit" id="submit-button" value="Log In">
+    <a href="<?= url_for('forgotpassword.php')?>">Forgot Password?</a>
   </form>
+  
 
 </main>
 

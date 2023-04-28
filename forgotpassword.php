@@ -50,12 +50,7 @@ if(is_post_request()) {
       }
     } else {
       // username not found or password does not match
-        if($user == false) {
-          $errors[] = "Username not found";
-        }
-        else {
-          $errors[] = "Username and email do not match.";
-        }
+        $errors[] = "Username and email do not match.";
     }
   }
 }
@@ -66,7 +61,7 @@ if(is_post_request()) {
   <?php echo display_errors($errors); ?>
   <form action="forgotpassword.php" method="post">
     <label for="username">Username:</label><br>
-    <input type="text" name="username" value="<?php echo h($username); ?>"  id="username" required><br>
+    <input type="text" name="username" value="<?php echo h($username); ?>"  id="username" required><br><br>
     <label for="email">Email:</label><br>
     <input type="email" name="email" value="" id="email" required><br>
     <br>
