@@ -32,17 +32,13 @@ if(is_post_request()) {
 
   <a class="back-link" href="<?php echo 'index.php'; ?>">&laquo; Back to List</a>
 
-  <div class="bicycle delete">
-    <h1>Delete User</h1>
-    <p>Are you sure you want to delete this user?</p>
-    <p class="item"><?php echo h($user->username_usr); ?></p>
+  <h1>Delete User</h1>
+  <p>Are you sure you want to delete this user?</p>
+  <p class="item"><?php echo h($user->username_usr); ?></p>
 
-    <form action="<?php echo 'delete.php?id=' . h(u($id)); ?>" method="post">
-      <div id="operations">
-        <input type="submit" name="commit" value="Delete User" />
-      </div>
-    </form>
-  </div>
+  <form action="<?php echo 'delete.php?id=' . h(u($id)); ?>" method="post">
+    <input type="submit" name="commit" value="Delete User">
+  </form>
 
 </main>
 

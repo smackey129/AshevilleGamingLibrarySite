@@ -28,21 +28,13 @@ if(is_post_request()) {
 <?php include(SHARED_PATH . '/admin_header.php'); ?>
 
 <main role="main" id="main-content" tabindex="-1">
-
   <a class="back-link" href="<?php echo 'index.php'; ?>">&laquo; Back to List</a>
-
-  <div class="bicycle delete">
-    <h1>Delete Game</h1>
-    <p>Are you sure you want to delete this game?</p>
-    <p class="item"><?php echo h($game->name_gme); ?></p>
-
-    <form action="<?php echo 'delete.php?id=' . h(u($id)); ?>" method="post">
-      <div id="operations">
-        <input type="submit" name="commit" value="Delete Game" />
-      </div>
-    </form>
-  </div>
-
+  <h1>Delete Game</h1>
+  <p>Are you sure you want to delete this game?</p>
+  <p class="item"><?php echo h($game->name_gme); ?></p>
+  <form action="<?php echo 'delete.php?id=' . h(u($id)); ?>" method="post">
+    <input type="submit" name="commit" value="Delete Game">
+  </form>
 </main>
 
 <?php include(SHARED_PATH . '/user_footer.php'); ?>

@@ -20,9 +20,6 @@ if($user == false) {
 <main role="main" id="main-content" tabindex="-1">
 
   <a class="back-link" href="<?php echo url_for('admin/users/index.php'); ?>">&laquo; Back to List</a>
-
-  
-
   <h1>User: <?php echo h($user->username_usr); ?></h1>
   <dl>
     <dt>First name</dt>

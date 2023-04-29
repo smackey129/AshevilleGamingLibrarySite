@@ -38,23 +38,14 @@ if(is_post_request()) {
 <main role="main" id="main-content" tabindex="-1">
 
   <a class="back-link" href="<?php echo 'index.php'; ?>">&laquo; Back to List</a>
+  <h1>Edit Game</h1>
+  <p>Fields marked with * are required</p>
+  <?php echo display_errors($game->errors); ?>
 
-  <div class="bicycle edit">
-    <h1>Edit Game</h1>
-    <p>Fields marked with * are required</p>
-    <?php echo display_errors($game->errors); ?>
-
-    <form action="<?php echo 'edit.php?id=' . h(u($id)); ?>" method="post">
-
-      <?php include('form_fields.php'); ?>
-
-      <div id="operations">
-        <input type="submit" value="Edit Game" />
-      </div>
-    </form>
-
-  </div>
-
+  <form action="<?php echo 'edit.php?id=' . h(u($id)); ?>" method="post">
+    <?php include('form_fields.php'); ?>
+    <input type="submit" value="Edit Game">
+  </form>
 </main>
 
 <?php include(SHARED_PATH . '/user_footer.php'); ?>

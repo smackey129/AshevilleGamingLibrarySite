@@ -33,10 +33,8 @@ if(is_post_request()) {
     <?php echo display_errors($game->errors); ?>
 
     <form action="<?php echo 'new.php'; ?>" method="post">
-
       <?php include('form_fields.php'); ?>
-
-        <input type="submit" value="Create Game" />
+      <input type="submit" value="Create Game">
     </form>
 </main>
 <?php include(SHARED_PATH . '/user_footer.php'); ?>

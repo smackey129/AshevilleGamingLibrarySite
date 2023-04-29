@@ -23,21 +23,17 @@ if(is_post_request()) {
 
 ?>
 
-<?php $page_title = 'Create Inventory Item'; ?>
+<?php $page_title = 'Add Inventory Item'; ?>
 <?php include(SHARED_PATH . '/admin_header.php'); ?>
 <main role="main" id="main-content" tabindex="-1">
   <a class="back-link" href="<?php echo 'index.php'; ?>">&laquo; Back to List</a>
+  <h1>Create Inventory Item</h1>
+  <?php echo display_errors($item->errors); ?>
+  <p>All fields marked with "*" are required.</p>
 
-    <h1>Create Inventory Item</h1>
-
-    <?php echo display_errors($item->errors); ?>
-    <p>All fields marked with "*" are required.</p>
-
-    <form action="<?php echo 'new.php'; ?>" method="post">
-
-      <?php include('form_fields.php'); ?>
-
-        <input type="submit" value="Create Item" />
-    </form>
+  <form action="<?php echo 'new.php'; ?>" method="post">
+    <?php include('form_fields.php'); ?>
+    <input type="submit" value="Create Item">
+  </form>
 </main>
 <?php include(SHARED_PATH . '/user_footer.php'); ?>
