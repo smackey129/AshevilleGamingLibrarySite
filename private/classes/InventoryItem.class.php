@@ -155,7 +155,7 @@ class InventoryItem extends DatabaseObject {
   }
 
   public function checkout($user) {
-    echo "<p>The Item Has been Checked out for " . $user->username_usr ." Come pick up the item at our location at *insert address here*</p>";
+    echo "<p><strong>" . $this->getGame() . "</strong> has been checked out for <strong>" . $user->username_usr ."</strong>. Come pick up the item at our location at *insert address here*</p>";
     $this->id_usr_inv = $user->id;
     $this->available_inv = "0";
     $now = new DateTime();
