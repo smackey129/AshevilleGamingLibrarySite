@@ -49,10 +49,8 @@ if(is_post_request()) {
     <?php echo display_errors(array_merge($item->errors, $new_game->errors)); ?>
 
     <form action="<?php echo 'donate.php'; ?>" method="post">
-
       <?php include('form_fields_inventory.php'); ?>
-
-        <input type="submit" value="Create Item">
+      <input type="submit" value="Create Item">
     </form>
 </main>
 <?php include(SHARED_PATH . '/user_footer.php'); ?>
