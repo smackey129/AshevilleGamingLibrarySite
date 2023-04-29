@@ -1,6 +1,6 @@
 <?php require_once('../private/initialize.php');   ?>
 
-<?php $page_title = 'Search Page'; 
+<?php $page_title = 'Catalog Search Page'; 
 $current_page = 3;
 ?>
 
