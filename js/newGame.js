@@ -7,6 +7,13 @@ if (gameOption && newGameForm) {
   newGameForm.style.display = 'none';
   gameOption.addEventListener('input', toggleNewGame);
 }
+
+/**
+ * Toggles whether or not the fieldset for submitting a new game is disabled
+ *
+ * @param   {[Event]}  e  The event being handled
+ *
+ */
 function toggleNewGame(e) {
   if(e.target.value == -1) {
     newGameForm.style.display = 'block';
