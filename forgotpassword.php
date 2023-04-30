@@ -61,10 +61,9 @@ if(is_post_request()) {
   <?php echo display_errors($errors); ?>
   <form action="forgotpassword.php" method="post">
     <label for="username">Username:</label><br>
-    <input type="text" name="username" value="<?php echo h($username); ?>"  id="username" required><br><br>
+    <input type="text" name="username" value="<?php echo h($username); ?>"  id="username" required>
     <label for="email">Email:</label><br>
-    <input type="email" name="email" value="" id="email" required><br>
-    <br>
+    <input type="email" name="email" value="" id="email" required>
     <script src="<?= url_for('js/captchaSetup.js')?>" async defer></script>
     <div
         class="g-recaptcha"

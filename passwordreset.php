@@ -37,9 +37,9 @@ if(is_post_request()) {
 
   <form action='<?=url_for("passwordreset.php?id=") . $token;?>' method="post">
     
-    <label for="user[password]">Password</label><br>
+    <label for="user[password]">Enter New Password</label><br>
     <input type="password" name="user[password]" value="" id="user[password]" required><br>
-    <label for="user[confirm_password]">Confirm Password</label><br>
+    <label for="user[confirm_password]">Confirm New Password</label><br>
     <input type="password" name="user[confirm_password]" value="" id="user[confirm_password]" required><br>
     <script src="<?= url_for('js/captchaSetup.js')?>" async defer></script>
     <div
