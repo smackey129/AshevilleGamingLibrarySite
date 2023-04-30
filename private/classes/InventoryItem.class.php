@@ -37,7 +37,7 @@ class InventoryItem extends DatabaseObject {
   /**
    * Checks to see if the current properties of the object are valid.
    *
-   * @return  string[]  An associative array of any validation errors
+   * @return  String[]  An associative array of any validation errors
    */
   protected function validate() {
     $this->errors = [];
@@ -62,7 +62,7 @@ class InventoryItem extends DatabaseObject {
   /**
    * Returns the name of the game associated with the InventoryItem object
    *
-   * @return  string  The name of the game associated with the object
+   * @return  String  The name of the game associated with the object
    */
   public function getGame() {
     $sql = "SELECT name_gme FROM games_gme WHERE id='" . $this->id_gme_inv . "'";
@@ -74,7 +74,7 @@ class InventoryItem extends DatabaseObject {
   /**
    * Returns the console that the InventoryItem is for
    * 
-   * @return string The console that the game is for
+   * @return String The console that the game is for
    */
   public function getConsole() {
     $sql = "SELECT name_con FROM consoles_con WHERE id='" . $this->id_con_inv . "'";
@@ -152,12 +152,12 @@ class InventoryItem extends DatabaseObject {
 
     //Check the genre field
     if(isset($terms["genre"])){
-      $sql = $sql . createSearchTerm($terms["genre"], "id_gnr_gme", self::$database);
+      $sql = $sql .  " AND " . createSearchTerm($terms["genre"], "id_gnr_gme", self::$database);
     }
     
     //Check the console field
     if(isset($terms["console"])){
-      $sql = $sql . createSearchTerm($terms["console"], "id_con_inv", self::$database);
+      $sql = $sql . " AND " . createSearchTerm($terms["console"], "id_con_inv", self::$database);
     }
 
     //Check the publisher field
@@ -166,7 +166,7 @@ class InventoryItem extends DatabaseObject {
 
     //Check rating field
     if(isset($terms["rating"])) {
-      $sql = $sql . createSearchTerm($terms["rating"], "id_age_gme", self::$database);
+      $sql = $sql . " AND " . createSearchTerm($terms["rating"], "id_age_gme", self::$database);
     }
 
     //Check condition field
@@ -210,7 +210,7 @@ class InventoryItem extends DatabaseObject {
    *
    * @param   User  $user  The user to check out the item
    *
-   * @return  boolean   Returns true if the item was checked out, false if it wasn't.
+   * @return  Boolean   Returns true if the item was checked out, false if it wasn't.
    */
   public function checkout($user) {
     if(!$this->available_inv) {
@@ -230,7 +230,7 @@ class InventoryItem extends DatabaseObject {
    *
    * @param   User  $user  The user to return the game
    *
-   * @return  boolean       True if the item was returned, false if not
+   * @return  Boolean       True if the item was returned, false if not
    */
   public function return($user) {
     if($user->id != $this->id_usr_inv) {
@@ -248,7 +248,7 @@ class InventoryItem extends DatabaseObject {
    *
    * @param   User  $user  The user to search their wishlist
    *
-   * @return  boolean         True if the item is on there, false if it is not
+   * @return  Boolean         True if the item is on there, false if it is not
    */
   public function isWishlisted($user) {
     $sql = "SELECT * FROM wish_list_wsh WHERE id_usr_wsh ='" . $user->id . "' AND id_inv_wsh ='" . $this->id . "'";

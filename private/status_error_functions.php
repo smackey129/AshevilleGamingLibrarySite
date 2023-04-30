@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Makes sure that a page requires the user to be logged in and redirects them to the home page if they are not
+ *
+ */
 function require_login() {
   global $session;
   if(!$session->is_logged_in()){
@@ -8,6 +12,10 @@ function require_login() {
 
 }
 
+/**
+ * Redirects the user to the home page if they are not an admin
+ *
+ */
 function require_admin() {
   global $session;
   require_login();
@@ -16,6 +24,13 @@ function require_admin() {
   }
 }
 
+/**
+ * Displays any errors from the associated array 
+ * 
+ * @param String[] An array of errors
+ * 
+ * @return String An unordered list of errors
+ */
 function display_errors($errors=array()) {
   $output = '';
   $nonArray = false;
@@ -39,6 +54,11 @@ function display_errors($errors=array()) {
   return $output;
 }
 
+/**
+ * Displays the message associated with the session and then clears it
+ *
+ * @return  String The message associated with the current user session
+ */
 function display_session_message() {
   global $session;
   $msg = $session->message();

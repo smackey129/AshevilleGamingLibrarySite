@@ -1,54 +1,74 @@
 <?php
 
-  // is_blank('abcd')
-  // * validate data presence
-  // * uses trim() so empty spaces don't count
-  // * uses === to avoid false positives
-  // * better than empty() which considers "0" to be empty
+  /**
+   * Checks to see if a string is only whitespace or not
+   *
+   * @param   String  $value  The string to be tested
+   *
+   * @return  Boolean True if the string is empty, false if is not
+   */
   function is_blank($value) {
     return !isset($value) || trim($value) === '';
   }
 
-  // has_presence('abcd')
-  // * validate data presence
-  // * reverse of is_blank()
-  // * I prefer validation names with "has_"
+  /**
+   * Checks to see if the value is not blank
+   *
+   * @param   String  $value  The String
+   *
+   * @return  Boolean          True if it is not blank, false if it isn't
+   */
   function has_presence($value) {
     return !is_blank($value);
   }
 
-  // has_length_greater_than('abcd', 3)
-  // * validate string length
-  // * spaces count towards length
-  // * use trim() if spaces should not count
+  /**
+   * Checks to see if the string has a value greater than the given value
+   *
+   * @param   int  $value  The String to check
+   * @param   String  $min    The minimum value
+   *
+   * @return  Boolean          True if the length of the string is greater than the specified minimum, false if it is not
+   */
   function has_length_greater_than($value, $min) {
     $length = strlen($value);
     return $length > $min;
   }
 
-  // has_length_less_than('abcd', 5)
-  // * validate string length
-  // * spaces count towards length
-  // * use trim() if spaces should not count
+  /**
+   * Checks to see if the string has a value less than the given value
+   *
+   * @param   int  $value  The String to check
+   * @param   String  $max    The maximum value
+   *
+   * @return  Boolean          True if the length of the string is less than the specified maximum, false if it is not
+   */
   function has_length_less_than($value, $max) {
     $length = strlen($value);
     return $length < $max;
   }
 
-  // has_length_exactly('abcd', 4)
-  // * validate string length
-  // * spaces count towards length
-  // * use trim() if spaces should not count
+  /**
+   * Checks to see if the string has a length equal to the given value
+   *
+   * @param   int  $value  The String to check
+   * @param   String  $exact   The value to check against
+   *
+   * @return  Boolean          True if the length of the string equal to the specified value, false if it is not
+   */
   function has_length_exactly($value, $exact) {
     $length = strlen($value);
     return $length == $exact;
   }
 
-  // has_length('abcd', ['min' => 3, 'max' => 5])
-  // * validate string length
-  // * combines functions_greater_than, _less_than, _exactly
-  // * spaces count towards length
-  // * use trim() if spaces should not count
+  /**
+   * Checks to see if a string is between two given values
+   *
+   * @param   String  $value    The String to check
+   * @param   String[]  $options  An array of options with keys "min", "max", "exact"
+   *
+   * @return  Boolean            Returns true if all of the conditions are satisfied
+   */
   function has_length($value, $options) {
     if(isset($options['min']) && !has_length_greater_than($value, $options['min'] - 1)) {
       return false;
@@ -61,43 +81,62 @@
     }
   }
 
-  // has_inclusion_of( 5, [1,3,5,7,9] )
-  // * validate inclusion in a set
+  /**
+   * Checks to see if a value is in a set
+   *
+   * @param   Integer  $value  The value to check for
+   * @param   Integer[]  $set    The set to check against
+   *
+   * @return  Boolean          True if the value is in the set, false if not
+   */
   function has_inclusion_of($value, $set) {
   	return in_array($value, $set);
   }
 
-  // has_exclusion_of( 5, [1,3,5,7,9] )
-  // * validate exclusion from a set
+  /**
+   * Checks to see if a given value is not in a set
+   *
+   * @param   Integer  $value  The value to check for
+   * @param   Integer[]  $set    The set to check against
+   *
+   * @return  Boolean          True if the value is not included, false if it is
+   */
   function has_exclusion_of($value, $set) {
     return !in_array($value, $set);
   }
 
-  // has_string('nobody@nowhere.com', '.com')
-  // * validate inclusion of character(s)
-  // * strpos returns string start position or false
-  // * uses !== to prevent position 0 from being considered false
-  // * strpos is faster than preg_match()
+  /**
+   * Checks to see if a string has a particular substring
+   *
+   * @param   String  $value            The string to check
+   * @param   String  $required_string  The substring to check for
+   *
+   * @return  Boolean                    True if the substring is present, false if it isn't
+   */
   function has_string($value, $required_string) {
     return strpos($value, $required_string) !== false;
   }
 
-  // has_valid_email_format('nobody@nowhere.com')
-  // * validate correct format for email addresses
-  // * format: [chars]@[chars].[2+ letters]
-  // * preg_match is helpful, uses a regular expression
-  //    returns 1 for a match, 0 for no match
-  //    http://php.net/manual/en/function.preg-match.php
+  /**
+   * Checks to see if the string is in a valid email format
+   *
+   * @param   String  $value  The string to check
+   *
+   * @return  Boolean          True if the string is in a valid format, false if it isn't
+   */
   function has_valid_email_format($value) {
     $email_regex = '/\A[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\Z/i';
     return preg_match($email_regex, $value) === 1;
   }
 
-  // has_unique_username('johnqpublic')
-  // * Validates uniqueness of admins.username
-  // * For new records, provide only the username.
-  // * For existing records, provide current ID as second argument
-  //   has_unique_username('johnqpublic', 4)
+  /**
+   * Checks to see if a username is already taken
+   *
+   * @param   String  $username    The username to be checked
+   * @param   Integer  $current_id  The id of the user being checked
+   *
+   * @return  Boolean               True if the username is unique, false if it isn't
+   */
   function has_unique_username($username, $current_id="0") {
     $user = User::find_by_username($username);
     if($user === false || $user->id == $current_id) {
