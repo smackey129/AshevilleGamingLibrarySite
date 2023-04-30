@@ -25,8 +25,7 @@ if(is_post_request()) {
     $result = $item->save();
     if($result === true) {
       $new_id = $item->id;
-      $session->message('Thank you for your donation! Either come in and drop off your game in person or mail it to us at our location at *insert address here*');
-      redirect_to(url_for('catalog/view.php?id=' . $item->id));
+      redirect_to('confirmdonation.php');
     } else {
       // show errors
     }
@@ -50,7 +49,7 @@ if(is_post_request()) {
 
     <form action="<?php echo 'donate.php'; ?>" method="post">
       <?php include('form_fields_inventory.php'); ?>
-      <input type="submit" value="Create Item">
+      <input type="submit" value="Donate">
     </form>
 </main>
 <?php include(SHARED_PATH . '/user_footer.php'); ?>
