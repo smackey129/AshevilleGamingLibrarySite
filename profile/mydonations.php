@@ -1,6 +1,6 @@
 <?php require_once('../private/initialize.php'); ?>
 <?php 
-$page_title = $session->username . '\'s Profile'; 
+$page_title = $session->username . '\'s Donations'; 
 include(SHARED_PATH . '/user_header.php'); 
 $user = User::find_by_username($session->username);
 $donations = $user->getDonations();

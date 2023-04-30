@@ -1,5 +1,5 @@
 <?php require_once('../private/initialize.php');   ?>
-<?php $page_title = 'Information Updated'; ?>
+<?php $page_title = 'User Information Updated'; ?>
 <?php include(SHARED_PATH . '/user_header.php'); ?>
 <?php 
   if(isset($_SERVER['HTTP_REFERER']) && (mb_strpos($_SERVER['HTTP_REFERER'], 'editinfo.php')!==false)) { ?>
