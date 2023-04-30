@@ -20,6 +20,7 @@ if(is_post_request()) {
   $result = $user->save();
   if($result === true) {
     $user->clearToken();
+    $session->message("Your password has been reset!");
     redirect_to(url_for('login.php'));
   }
 }
