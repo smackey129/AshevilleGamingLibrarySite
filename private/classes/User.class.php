@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * A class that represents an object in the users_usr table
+ */
 class User extends DatabaseObject {
 
   static protected $table_name = "users_usr";
@@ -22,6 +24,12 @@ class User extends DatabaseObject {
   public $confirm_password;
   protected $password_required = true;
 
+  /**
+   * A constructor function for a User Object
+   *
+   * @param   Array  $args  An associative array with indexes corresponding to the fields in the table
+   *
+   */
   public function __construct($args=[]) {
     $this->fname_usr = $args['fname_usr'] ?? '';
     $this->lname_usr = $args['lname_usr'] ?? '';
@@ -36,23 +44,48 @@ class User extends DatabaseObject {
     $this->confirm_password = $args['confirm_password'] ?? '';
   }
 
+  /**
+   * Returns the full name of the user
+   * 
+   * @return String The full name of the user
+   */
   public function full_name() {
     return $this->fname_usr . " " . $this->lname_usr;
   }
 
+  /**
+   * Sets the hashed password for the user
+   */
   protected function set_hashed_password() {
     $this->hashed_password_usr = password_hash($this->password, PASSWORD_BCRYPT);
   }
 
+  /**
+   * Verifies the given password for the user
+   *
+   * @param   String  $password  The password to check
+   *
+   * @return  boolean             True if the password matches, false if it doesn't
+   */
   public function verify_password($password) {
     return password_verify($password, $this->hashed_password_usr);
   }
 
+  /**
+   * Creates a new user record in the database
+   * 
+   * @return boolean True if the operation succeeded, false if it did not
+   */
   protected function create() {
     $this->set_hashed_password();
     return parent::create();
   }
 
+  /**
+   * Updates a user record in the database
+   * 
+   * @return boolean True if the operation succeeded, false if it did not
+   */
   protected function update() {
     if($this->password != '') {
       // validate password
@@ -64,6 +97,11 @@ class User extends DatabaseObject {
     return parent::update();
   }
 
+  /**
+   * Checks to see if the current properties of the object are valid.
+   *
+   * @return  string[]  An associative array of any validation errors
+   */
   protected function validate() {
     $this->errors = [];
   
@@ -91,8 +129,10 @@ class User extends DatabaseObject {
       $this->errors["username"][] = "Username cannot be blank.";
     } elseif (!has_length($this->username_usr, array('min' => 8, 'max' => 255))) {
       $this->errors["username"][] = "Username must be between 8 and 255 characters.";
+    } elseif (str_contains($this->username_usr, " ")) {
+      $this->errors["username"][] = "Username must not contain spaces.";
     } elseif (!has_unique_username($this->username_usr, $this->id ?? 0)) {
-      $this->errors["username"][] = "Username not allowed, try another.";
+      $this->errors["username"][] = "Username not available, try another.";
     }
 
     if(is_blank($this->street_address_usr)) {
@@ -135,6 +175,13 @@ class User extends DatabaseObject {
     return $this->errors;
   }
   
+  /**
+   * Returns a User object with the provided username
+   *
+   * @param   String  $username_usr  The username to search for
+   *
+   * @return  User                 The User object with a matching username, or false if none is found
+   */
   static public function find_by_username($username_usr) {
     $sql = "SELECT * FROM " . static::$table_name . " ";
     $sql .= "WHERE username_usr ='" . self::$database->escape_string($username_usr) . "'";
@@ -146,6 +193,11 @@ class User extends DatabaseObject {
     }
   }
 
+  /**
+   * Returns the state abbreviation for the user
+   *
+   * @return  String  The State Abbreviation for the user
+   */
   public function getStateAbbr() {
     $sql = "SELECT state_abbr_sta FROM states_sta WHERE id='" . $this->id_sta_usr . "'";
     $result = self::$database->query($sql);
@@ -153,18 +205,33 @@ class User extends DatabaseObject {
     return $result['state_abbr_sta'];
   }
 
+  /**
+   * Returns the InventoryItem objects donated by the user
+   *
+   * @return  InventoryItem[]  The InvenetoryItems donated by the user
+   */
   public function getDonations() {
     $sql = "SELECT * FROM inventory_inv WHERE id_usrdonator_inv ='" . $this->id . "'";
     $result = InventoryItem::find_by_sql($sql);
     return $result;
   }
 
+  /**
+   * Returns the InventoryItem objects checked out by the user
+   *
+   * @return  InventoryItem[]  The InvenetoryItems checked out by the user
+   */
   public function getCheckouts() {
     $sql = "SELECT * FROM inventory_inv WHERE id_usr_inv ='" . $this->id . "'";
     $result = InventoryItem::find_by_sql($sql);
     return $result;
   }
 
+  /**
+   * Gets the InventoryItems on the User's Wishlist
+   *
+   * @return  InventoryItem[]  An array of InventoryItem objects on the user's wishlist
+   */
   public function getWishList() {
     $sql = "SELECT id_inv_wsh FROM wish_list_wsh WHERE id_usr_wsh ='" . $this->id . "'";
     $result = self::$database->query($sql);
@@ -175,18 +242,49 @@ class User extends DatabaseObject {
     return $object_array;
   }
 
+  /**
+   * Adds an InventoryItem to the user's wishlist
+   * 
+   * @param InventoryItem The item to be added to the wishlist
+   * 
+   * @return boolean True if the item is not on the wishlist, false if it is
+   */
   public function addToWishList($item) {
-    $sql = "INSERT INTO wish_list_wsh (id_usr_wsh, id_inv_wsh) VALUES ('" . $this->id . "', '" . $item->id . "')";
-    $result = self::$database->query($sql);
-    return $result;
+    if(!$item->isWishlisted($this)) {
+      $sql = "INSERT INTO wish_list_wsh (id_usr_wsh, id_inv_wsh) VALUES ('" . $this->id . "', '" . $item->id . "')";
+      $result = self::$database->query($sql);
+      return $result;
+    }
+    else {
+      return false;
+    }
   }
 
+  /**
+   * Removes an InventoryItem from the user's wishlist
+   * 
+   * @param InventoryItem The item to be removed from the wishlist
+   * 
+   * @return boolean True if the item is on the wishlist, false if it isn't
+   */
   public function removeFromWishList($item) {
-    $sql = "DELETE FROM wish_list_wsh WHERE id_usr_wsh ='" . $this->id . "' AND id_inv_wsh ='" . $item->id . "'";
-    $result = self::$database->query($sql);
-    return $result;
+    if($item->isWishListed($this)){
+      $sql = "DELETE FROM wish_list_wsh WHERE id_usr_wsh ='" . $this->id . "' AND id_inv_wsh ='" . $item->id . "'";
+      $result = self::$database->query($sql);
+      return $result;
+    }
+    else {
+      return false;
+    }
   }
 
+  /**
+   * Returns the State name
+   *
+   * @param   String  $id  The id number of the state
+   *
+   * @return  String       The name of the state
+   */
   public static function getStateNameById($id) {
     $sql = "SELECT state_name_sta FROM states_sta WHERE id='" . $id . "'";
     $result = self::$database->query($sql);
@@ -194,6 +292,11 @@ class User extends DatabaseObject {
     return $result['state_name_sta'];
   }
 
+  /**
+   * Generates a password reset token for the user and enters it into the database and clears any existing tokens the user has, and returns the token
+   *
+   * @return  String The user's password reset token
+   */
   public function generatePasswordToken() {
     if($this->hasToken()){
       $this->clearToken();
@@ -213,6 +316,11 @@ class User extends DatabaseObject {
     }
   }
 
+  /**
+   * Checks to see if the user has a token
+   *
+   * @return  boolean  True if the user has a token, false if they do not
+   */
   public function hasToken(){
     $sql = "SELECT * FROM password_reset_tokens_prt WHERE id_usr_prt = ". $this->id . "";
     $result = self::$database->query($sql);
@@ -222,6 +330,13 @@ class User extends DatabaseObject {
     return false;
   }
 
+  /**
+   * Returns the id number of the user with the given token
+   *
+   * @param   String  $token  The user's password reset token
+   *
+   * @return  String          The id number of the user with the token, or false if there was no match
+   */
   public static function getUserFromToken($token) {
     $now = new DateTime();
     $now = $now->format('Y-m-d H:i:s');
@@ -235,6 +350,10 @@ class User extends DatabaseObject {
     return false;
   }
 
+  /**
+   * Deletes the user's current token
+   *
+   */
   public function clearToken(){
     $sql = "DELETE FROM password_reset_tokens_prt WHERE id_usr_prt = ". $this->id . "";
     $result = self::$database->query($sql);

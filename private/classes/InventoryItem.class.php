@@ -1,5 +1,8 @@
 <?php 
 
+/**
+ * A class that represents an object in the inventory_inv table
+ */
 class InventoryItem extends DatabaseObject {
 
   static protected $table_name = "inventory_inv";
@@ -15,6 +18,12 @@ class InventoryItem extends DatabaseObject {
   public $available_inv;
   public $available_after_inv;
 
+  /**
+   * A constructor function for a InventoryItem Object
+   *
+   * @param   Array  $args  An associative array with indexes corresponding to the fields in the table
+   *
+   */
   public function __construct($args=[]) {
     $this->id_gme_inv = $args['id_gme_inv'] ?? '';
     $this->id_con_inv = $args['id_con_inv'] ?? '';
@@ -25,6 +34,11 @@ class InventoryItem extends DatabaseObject {
     $this->available_after_inv = $args['available_after_inv'] ?? date("Y/m/d");
   }
 
+  /**
+   * Checks to see if the current properties of the object are valid.
+   *
+   * @return  string[]  An associative array of any validation errors
+   */
   protected function validate() {
     $this->errors = [];
 
@@ -45,6 +59,11 @@ class InventoryItem extends DatabaseObject {
     } 
   }
 
+  /**
+   * Returns the name of the game associated with the InventoryItem object
+   *
+   * @return  string  The name of the game associated with the object
+   */
   public function getGame() {
     $sql = "SELECT name_gme FROM games_gme WHERE id='" . $this->id_gme_inv . "'";
     $result = self::$database->query($sql);
@@ -52,6 +71,11 @@ class InventoryItem extends DatabaseObject {
     return $result['name_gme'];
   }
 
+  /**
+   * Returns the console that the InventoryItem is for
+   * 
+   * @return string The console that the game is for
+   */
   public function getConsole() {
     $sql = "SELECT name_con FROM consoles_con WHERE id='" . $this->id_con_inv . "'";
     $result = self::$database->query($sql);
@@ -59,6 +83,11 @@ class InventoryItem extends DatabaseObject {
     return $result['name_con'];
   }
 
+  /**
+   * Returns the username that is currently checking out the game
+   *
+   * @return  String  The username currently checking out the game. If no user has checked out the game, then "Not Currently Checked Out" will be returned
+   */
   public function getCurrentUser() {
     $sql = "SELECT username_usr FROM users_usr WHERE id='" . $this->id_usr_inv . "'";
     $result = self::$database->query($sql);
@@ -71,6 +100,11 @@ class InventoryItem extends DatabaseObject {
     }
   }
 
+  /**
+   * Returns the username that donated the game
+   *
+   * @return  String  The user that donated the game
+   */
   public function getDonator() {
     $sql = "SELECT username_usr FROM users_usr WHERE id='" . $this->id_usrdonator_inv . "'";
     $result = self::$database->query($sql);
@@ -78,6 +112,11 @@ class InventoryItem extends DatabaseObject {
     return $result['username_usr'];
   }
 
+  /**
+   * Returns whether or not the game is available
+   *
+   * @return  String  Returns "Yes" if it available or "No" if it isn't.
+   */
   public function getAvailability() {
     if($this->available_inv) {
       return "Yes";
@@ -87,11 +126,23 @@ class InventoryItem extends DatabaseObject {
     }
   }
 
+  /**
+   * Returns a list of InventoryItems in alphabetical order
+   *
+   * @return  InventoryItem[]  An array of InventoryItem objects in alphabetical order
+   */
   public static function getItemsAlphabetized() {
     $sql = "SELECT inventory_inv.* FROM inventory_inv INNER JOIN games_gme ON games_gme.id = inventory_inv.id_gme_inv ORDER BY name_gme";
     return(static::find_by_sql($sql));
   }
 
+  /**
+   * Returns an array of InventoryItems based on the given search terms
+   *
+   * @param   Array  $terms  An associative array of search terms
+   *
+   * @return  InventoryItem[]  An array of Inventory Items that match the search terms
+   */
   public static function search($terms){
     $sql = "SELECT inventory_inv.* FROM inventory_inv INNER JOIN games_gme ON games_gme.id = inventory_inv.id_gme_inv INNER JOIN companies_cmp ON games_gme.id_cmppub_gme = companies_cmp.id INNER JOIN consoles_con ON inventory_inv.id_con_inv = consoles_con.id WHERE ";
 
@@ -154,8 +205,17 @@ class InventoryItem extends DatabaseObject {
     return static::find_by_sql($sql);
   }
 
+  /**
+   * Checks out an item for the provided user
+   *
+   * @param   User  $user  The user to check out the item
+   *
+   * @return  boolean   Returns true if the item was checked out, false if it wasn't.
+   */
   public function checkout($user) {
-    echo "<p><strong>" . $this->getGame() . "</strong> has been checked out for <strong>" . $user->username_usr ."</strong>. Come pick up the item at our location at *insert address here*</p>";
+    if(!$this->available_inv) {
+      return false;
+    }
     $this->id_usr_inv = $user->id;
     $this->available_inv = "0";
     $now = new DateTime();
@@ -165,6 +225,13 @@ class InventoryItem extends DatabaseObject {
     return true;
   }
 
+  /**
+   * Returns the game to the library
+   *
+   * @param   User  $user  The user to return the game
+   *
+   * @return  boolean       True if the item was returned, false if not
+   */
   public function return($user) {
     if($user->id != $this->id_usr_inv) {
       return false;
@@ -176,6 +243,13 @@ class InventoryItem extends DatabaseObject {
     return true;
   }
 
+  /**
+   * Checks to see if an inventory item is on a user's wishlist
+   *
+   * @param   User  $user  The user to search their wishlist
+   *
+   * @return  boolean         True if the item is on there, false if it is not
+   */
   public function isWishlisted($user) {
     $sql = "SELECT * FROM wish_list_wsh WHERE id_usr_wsh ='" . $user->id . "' AND id_inv_wsh ='" . $this->id . "'";
     $result = self::$database->query($sql);
