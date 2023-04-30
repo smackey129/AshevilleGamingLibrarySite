@@ -29,6 +29,8 @@ if($game == false) {
 <?php include(SHARED_PATH . '/user_header.php'); ?>
 <main role="main" id="main-content" tabindex="-1">
   <h1>Thank You!</h1>
-  <?php $item->checkout($user); ?>
+  <?php if($item->checkout($user)){
+    echo "<p><strong>" . h($item->getGame()) . "</strong> has been checked out for <strong>" . h($user->username_usr) ."</strong>. Come pick up the item at our location at *insert address here*</p>";
+  } ?>
 </main>
 <?php include(SHARED_PATH . '/user_footer.php'); ?>

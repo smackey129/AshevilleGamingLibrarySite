@@ -36,7 +36,7 @@ $wishlist = $user->getWishList();
 
       <?php foreach($wishlist as $item) { ?>
         <tr>
-          <td><a href="<?= url_for('catalog/view.php?id=' . h(u($item->id)));?>"> <?= ($item->getGame()); ?></td>
+          <td><a href="<?= url_for('catalog/view.php?id=' . h(u($item->id)));?>"> <?= h($item->getGame()); ?></td>
           <td><?= h($item->getAvailability()); ?></td>
           <td><?= h($item->available_after_inv); ?></td>
           <td>

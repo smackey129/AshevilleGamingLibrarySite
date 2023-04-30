@@ -21,7 +21,7 @@
       <?php 
         require_login();
         echo "<div id='user_links'>";
-        echo "<span>Welcome ". $session->username . "!</span><br>";
+        echo "<span>Welcome ". h($session->username) . "!</span><br>";
         echo "<a href='". url_for("/profile") ."'>User Profile</a> ";
         if($session->user_level == 'admin'){
           echo "<a href='". url_for("/admin") ."'>Enter Admin Area</a> ";

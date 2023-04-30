@@ -30,7 +30,7 @@ if(is_post_request()){
 
       <?php foreach($inventory as $item) { ?>
         <tr>
-          <td><a href="<?= 'view.php?id=' . h(u($item->id));?>"> <?= ($item->getGame()); ?></td>
+          <td><a href="<?= 'view.php?id=' . h(u($item->id));?>"> <?= h($item->getGame()); ?></td>
           <td><?= h($item->getConsole()); ?></td>
           <td><?= h($item->condition_inv); ?></td>
           <td><?= h($item->getAvailability()); ?></td>

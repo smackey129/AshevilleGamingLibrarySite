@@ -18,7 +18,7 @@ $donations = $user->getDonations();
 
       <?php foreach($donations as $item) { ?>
         <tr>
-          <td><a href="<?= url_for('catalog/view.php?id=' . h(u($item->id)));?>"> <?= ($item->getGame()); ?></td>
+          <td><a href="<?= url_for('catalog/view.php?id=' . h(u($item->id)));?>"> <?= h($item->getGame()); ?></td>
           <td><?= h($item->getConsole()); ?></td>
     	  </tr>
       <?php } ?>
