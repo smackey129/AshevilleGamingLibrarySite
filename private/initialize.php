@@ -37,7 +37,5 @@
 
   $database = db_connect();
   DatabaseObject::set_database($database);
-//TODO : Probably don't need this line
-  // User::set_database($database);
   $session = new Session;
 ?>
