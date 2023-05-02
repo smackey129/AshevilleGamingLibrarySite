@@ -120,6 +120,13 @@ class Session {
       unset($_SESSION['message']);
     }
 
+    /**
+     * Checks to see if the logged in user has the same id as the provided user object
+     *
+     * @param   User  $user  The User to check
+     *
+     * @return  boolean         True if the user matches the logged in user, false if not
+     */
     public function check_id($user) {
       return $this->user_id == $user->id;
     }
