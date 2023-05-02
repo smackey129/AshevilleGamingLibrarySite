@@ -12,7 +12,7 @@ if(!isset($_GET['id'])) {
 $token = $_GET['id'];
 $user = User::getUserFromToken($token);
 
-
+$result = false;
 if(is_post_request()) {
 
   $args = $_POST['user'];
@@ -20,8 +20,6 @@ if(is_post_request()) {
   $result = $user->save();
   if($result === true) {
     $user->clearToken();
-    $session->message("Your password has been reset!");
-    redirect_to(url_for('login.php'));
   }
 }
 
@@ -32,7 +30,7 @@ if(is_post_request()) {
   <h1>Reset Password</h1>
   <?php if($user === false){ ?>
     <p>We're sorry, this link has expired or is otherwise invalid. If you want another password reset link, go to <a href="<?= url_for('forgotpassword.php')?>"><?=$_SERVER['SERVER_NAME'] . url_for('forgotpassword.php')?></a> and enter in your username and password to receive a new link</p>
-  <?php } else {?>
+  <?php } elseif(!$result) {?>
   <?php echo display_errors($user->errors); ?>
 
   <form action='<?=url_for("passwordreset.php?id=") . $token;?>' method="post">
@@ -51,7 +49,9 @@ if(is_post_request()) {
     <br>
     <input type="submit" name="submit" id="submit-button" value="Reset Password">
   </form>
-  <?php  } ?>
+  <?php  } else {?>
+    <p>Your Password has been reset!</p>
+  <?php }?>
 </main>
 
 <?php include(SHARED_PATH . '/user_footer.php'); ?>

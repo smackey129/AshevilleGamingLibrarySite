@@ -12,7 +12,7 @@ if($session->is_logged_in()) {
 $errors = [];
 $username = '';
 $email = '';
-
+$sent = false;
 if(is_post_request()) {
 
   $username = $_POST['username'] ?? '';
@@ -44,7 +44,7 @@ if(is_post_request()) {
          
       $retval = mail ($to,$subject,$message,$header);
       if( $retval == true ) {
-        echo "The password reset link has been sent to email address associated with this account. Be sure to check your junk/spam folder to see if it was moved there";
+        $sent = true;
       } else {
         echo "The password reset email could not be sent.";
       }
@@ -56,6 +56,7 @@ if(is_post_request()) {
 }
 ?>
 <main role="main" id="main-content" tabindex="-1">
+  <?php if(!$sent) { ?>
   <h1>Forgot Password</h1>
   <p>Enter your username and the email associated with your username</p>
   <?php echo display_errors($errors); ?>
@@ -74,5 +75,9 @@ if(is_post_request()) {
     <br>
     <input type="submit" name="submit" id="submit-button" value="Reset Password">
   </form>
+  <?php } else {
+    echo "<h1>Password Reset Email Sent</h1>";
+    echo "The password reset link has been sent to email address associated with this account. Be sure to check your junk/spam folder to see if it was moved there.";
+  } ?>
 </main>
 <?php include(SHARED_PATH . '/user_footer.php'); ?>
