@@ -18,6 +18,9 @@ if(is_post_request()) {
   $user->merge_attributes($args);
   $result = $user->save();
   if($result === true) {
+    if($session->check_id($user)){
+      $session->login($user);
+    }
     $session->message('The user was updated successfully.');
     redirect_to('show.php?id=' . $id);
   } else {

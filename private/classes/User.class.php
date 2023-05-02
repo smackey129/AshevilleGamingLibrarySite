@@ -5,7 +5,7 @@
 class User extends DatabaseObject {
 
   static protected $table_name = "users_usr";
-  static protected $db_columns = ['id', 'fname_usr', 'lname_usr', 'email_usr', 'username_usr', 'street_address_usr', 'city_usr', 'id_sta_usr', 'zip_usr', 'user_level_usr', 'hashed_password_usr', 'balance_usr'];
+  static protected $db_columns = ['id', 'fname_usr', 'lname_usr', 'email_usr', 'username_usr', 'street_address_usr', 'city_usr', 'id_sta_usr', 'zip_usr', 'user_level_usr', 'hashed_password_usr'];
 
   
   public $id;
@@ -19,7 +19,6 @@ class User extends DatabaseObject {
   public $zip_usr;
   public $user_level_usr;
   protected $hashed_password_usr;
-  public $balance_usr;
   public $password;
   public $confirm_password;
   protected $password_required = true;
@@ -129,7 +128,7 @@ class User extends DatabaseObject {
       $this->errors["username"][] = "Username cannot be blank.";
     } elseif (!has_length($this->username_usr, array('min' => 8, 'max' => 255))) {
       $this->errors["username"][] = "Username must be between 8 and 255 characters.";
-    } elseif (str_contains($this->username_usr, " ")) {
+    } elseif (has_string($this->username_usr, " ")) {
       $this->errors["username"][] = "Username must not contain spaces.";
     } elseif (!has_unique_username($this->username_usr, $this->id ?? 0)) {
       $this->errors["username"][] = "Username not available, try another.";
@@ -335,7 +334,7 @@ class User extends DatabaseObject {
    *
    * @param   String  $token  The user's password reset token
    *
-   * @return  String          The id number of the user with the token, or false if there was no match
+   * @return  User          The User object of the user with the token, or false if there was no match
    */
   public static function getUserFromToken($token) {
     $now = new DateTime();
